@@ -48,8 +48,9 @@
 					</div>
 				</div>
 				{{if .fail}}
-				<div>
-					登录失败
+				<div class="am-alert am-alert-danger" data-am-alert>
+				  <button type="button" class="am-close">&times;</button>
+				  <p>登录失败...</p>
 				</div>
 				{{end}}
 				<br>

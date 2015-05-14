@@ -23,6 +23,12 @@ func (this *ViewController) Index() {
 	this.TplNames = "login.html"
 }
 
+// @Title 错误页面
+// @router /error [get]
+func (this *ViewController) Error() {
+	this.TplNames = "error.html"
+}
+
 // @Title 登录验证
 // @router /index [post]
 func (this *ViewController) Login() {

@@ -4,14 +4,14 @@
 
 .tb th {
     width: 20%;
-    height: 50px;
+    height: 30px;
     text-align: center;
-    border-bottom: 2px solid #DDDDDD;
 }
 
 .tb td{
-    height: 100px;
+    height: 80px;
     text-align: center;
+    border-top: 1px solid #DDDDDD;
 }
 
 .tb .head {

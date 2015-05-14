@@ -9,6 +9,7 @@ import (
 
 var noNeedSessionRouter = [...]string{
 	"/",
+	"/error",
 }
 
 func CORSSupport(ctx *context.Context) {

@@ -35,3 +35,11 @@ func GetAdminById(id string) (*Admin, error) {
 	}
 	return user, nil
 }
+
+func UpdateAdmin(ptr *Admin) error {
+	_, err := orm.NewOrm().Update(ptr)
+	if err != nil {
+		return ErrorInfo("UpdateAdmin", err)
+	}
+	return nil
+}

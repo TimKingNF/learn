@@ -42,3 +42,11 @@ func GetStudentById(id string) (*Student, error) {
 	}
 	return user, nil
 }
+
+func UpdateStudent(ptr *Student) error {
+	_, err := orm.NewOrm().Update(ptr)
+	if err != nil {
+		return ErrorInfo("UpdateStudent", err)
+	}
+	return nil
+}

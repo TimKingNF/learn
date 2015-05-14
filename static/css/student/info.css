@@ -5,3 +5,7 @@
 .h-300 {
     height: 300px;
 }
+
+.over-follow-X {
+    overflow-x: auto;
+}

@@ -1,3 +1,11 @@
 <div class="am-u-lg-10 am-u-md-9 am-u-sm-12">
-
-	</div>
+	{{if .change}}
+		<br>
+		<div class='am-container'>
+			<div class="am-alert am-alert-success" data-am-alert>
+			  <button type="button" class="am-close">&times;</button>
+			  <p>操作成功...</p>
+			</div>
+		</div>
+	{{end}}
+</div>
