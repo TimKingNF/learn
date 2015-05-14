@@ -1,0 +1,113 @@
+
+	<div class="am-u-lg-10 am-u-md-9 am-u-sm-12">
+		<div class="am-container">
+			<br>
+			<strong class="am-text-primary am-text-lg">教师管理</strong> / <small>Teacher Management</small>
+			<hr>
+			<br>
+			<div class="am-tabs" data-am-tabs>
+				<ul class="am-tabs-nav am-nav am-nav-tabs">
+					<li class="am-active"><a href="javascript:;"><span class="am-icon-user"></span> 用户列表</a></li>
+					<li><a href="javascript:;"><span class="am-icon-user-plus"></span> 添加用户</a></li>
+				</ul>
+				<div class="am-tabs-bd">
+					<div class="am-tab-panel am-active">
+						<br>
+						<div class="am-u-lg-offset-6 am-u-lg-6 am-u-md-offset-4 am-u-md-8 am-u-sm-12 am-margin-bottom-lg">
+							<form action="" method="get" class="am-form">
+								<div class="am-input-group">
+									<input type="text" class="am-form-field">
+								<span class="am-input-group-btn">
+        							<button class="am-btn am-btn-success" type="submit" style="padding-top: 0.7em;padding-bottom: 0.7em;"><span class="am-icon-search"></span></button>
+      							</span>
+								</div>
+							</form>
+						</div>
+						<table class="am-table am-table-bordered am-table-radius">
+							<thead>
+							<tr>
+								<th>姓名</th>
+								<th>系</th>
+								<th>管理</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td>张三</td>
+								<td>电子通信与软件工程</td>
+								<td>
+									<div class="am-dropdown" data-am-dropdown>
+										<button class="am-btn am-btn-success am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle>设置</button>
+										<ul class="am-dropdown-content">
+											<li><a href="#">1. 详细</a></li>
+											<li><a href="#">2. 删除</a></li>
+										</ul>
+									</div>
+								</td>
+							</tr>
+							</tbody>
+						</table>
+						<ul class="am-pagination">
+							<li class="am-disabled"><a href="#">&laquo;</a></li>
+							<li class="am-disabled"><a href="#">上一页</a></li>
+							<li class="am-disabled"><a href="#">1/10</a></li>
+							<li><a href="#">下一页</a></li>
+							<li><a href="#">&raquo;</a></li>
+						</ul>
+					</div>
+					<div class="am-tab-panel">
+						<br>
+						<form action="" method="post" class="am-form am-form-inline" data-am-validator>
+							<div class="am-form-group am-form-file">
+								<button type="button" class="am-btn am-btn-success am-btn-sm">
+									<i class="am-icon-cloud-upload"></i> 选择要上传的EXCEL文件</button>
+								<input type="file" required multiple>
+							</div>
+							<div class="am-form-group">
+								<button type="submit" class="am-btn am-btn-default am-btn-sm">上传</button>
+							</div>
+						</form>
+						<hr>
+						<form action="" method="post" class="am-form am-form-horizontal" data-am-validator>
+							<div class="am-form-group">
+								<label for="username" class="am-u-sm-2 am-form-label">姓名</label>
+								<div class="am-u-sm-10 am-u-lg-6 am-u-end">
+									<input type="text" id="username" placeholder="姓名" required>
+								</div>
+							</div>
+							<div class="am-form-group">
+								<label for="id" class="am-u-sm-2 am-form-label">工号</label>
+								<div class="am-u-sm-10 am-u-lg-6 am-u-end">
+									<input type="text" id="id" placeholder="工号" required>
+								</div>
+							</div>
+							<div class="am-form-group">
+								<label for="department" class="am-u-sm-2 am-form-label">系</label>
+								<div class="am-u-sm-10 am-u-lg-6 am-u-end">
+									<input type="text" id="department" placeholder="系" required>
+								</div>
+							</div>
+							<div class="am-form-group">
+								<label for="major" class="am-u-sm-2 am-form-label">专业</label>
+								<div class="am-u-sm-10 am-u-lg-6 am-u-end">
+									<input type="text" id="major" placeholder="专业" required>
+								</div>
+							</div>
+							<div class="am-form-group">
+								<label for="class" class="am-u-sm-2 am-form-label">班级</label>
+								<div class="am-u-sm-10 am-u-lg-6 am-u-end">
+									<input type="text" id="class" placeholder="班级" required>
+								</div>
+							</div>
+							<div class="am-form-group">
+								<div class="am-u-sm-offset-2">
+									<button class="am-btn am-btn-primary am-radius">确认</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<br><br>
+		</div>
+	</div>

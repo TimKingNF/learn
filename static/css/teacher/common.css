@@ -1,0 +1,52 @@
+/* 回到顶部样式 */
+.retop {
+	position: fixed;
+	right: 10px;
+	bottom: 10px;
+	cursor: pointer;
+	z-index: 9999;
+}
+
+/* margin样式 */
+.mg-t-100 {
+	margin-top: 100px;
+}
+
+/* aside样式 */
+.aside {
+	background-color: #34495E;
+	color: #FFFFFF;
+	box-shadow: none;
+	border: none;
+}
+
+.aside .aside-head {
+	padding: 15px 0;
+	margin: 0;
+	background-color: #1ABC9C;
+}
+
+.aside-nav {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+.aside-nav li {
+	width: 100%;
+	line-height: 60px;
+	height: 60px;
+	cursor: pointer;
+	border-bottom: 1px solid #31343F;
+	text-indent: 0.6em;
+}
+.aside-nav li a {
+	font-size: 18px;
+	color: #95A5A6;
+	font-weight: bold;
+}
+
+.aside-nav li:hover a {
+	color: #1ABC9C;
+}

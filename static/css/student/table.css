@@ -1,0 +1,61 @@
+.tb {
+    width: 100%;
+}
+
+.tb th {
+    width: 20%;
+    height: 50px;
+    text-align: center;
+    border-bottom: 2px solid #DDDDDD;
+}
+
+.tb td{
+    height: 100px;
+    text-align: center;
+}
+
+.tb .head {
+    width: 20px;
+}
+
+.tb-class {
+    color: #FFFFFF;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.tb-red {
+    background-color: #E74C3C;
+}
+
+.tb-green {
+    background-color: #2ECC71;
+}
+
+.tb-black {
+    background-color: #34495E;
+}
+
+.tb-grey {
+    background-color: #95A5A6;
+}
+
+.tb-blue {
+    background-color: #3498DB;
+}
+
+.tb-yellow {
+    background-color: #FFF400;
+}
+
+.tb-violet {
+    background-color: #9B59B6;
+}
+
+.tb-origin {
+    background-color: #F37B1D;
+}
+
+.tb-blue-green {
+    background-color: #1ABC9C;
+}

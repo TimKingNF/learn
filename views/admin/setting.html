@@ -1,0 +1,28 @@
+<div class="am-u-lg-10 am-u-md-9 am-u-sm-12">
+	<div class="am-container">
+		<br>
+		<strong class="am-text-primary am-text-lg">个人设置</strong> / <small>User Setting</small>
+		<hr>
+		<br>
+		<form action="" method="post" class="am-form" data-am-validator>
+			<div class="am-u-sm-12 am-u-md-9 am-u-lg-6">
+				<div class="am-form-group">
+					<label for="oldpwd" class="am-form-label">原密码</label>
+					<input type="password" id="oldpwd" required pattern="^[A-Za-z0-9]+$" maxlength="20" minlength="5" placeholder="原密码">
+				</div>
+				<div class="am-form-group">
+					<label for="newpwd" class="am-form-label">新密码</label>
+					<input type="password" id="newpwd" required pattern="^[A-Za-z0-9]+$" maxlength="20" minlength="5" placeholder="新密码">
+					<small>请输入5-20位的数组字母组合的密码</small>
+				</div>
+				<div class="am-form-group">
+					<label for="chkpwd" class="am-form-label">确认密码</label>
+					<input type="password" id="chkpwd" required data-equal-to="#newpwd" placeholder="确认密码">
+				</div>
+				<div class="am-form-group">
+					<button class="am-btn am-btn-primary am-radius">确认</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>登陆页面</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/amazeui.min.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/login.css">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="renderer" content="webkit">
+  	<meta http-equiv="Cache-Control" content="no-siteapp"/>
+  	<meta name="mobile-web-app-capable" content="yes">
+  	<!--[if lt IE 9]>
+	<script type="text/javascript">alert("sorry，low version of the browser does not support");</script>
+  	<![endif]-->
+</head>
+<body>
+	<div class="am-g login">
+		<div class="am-u-sm-12 am-u-md-8 am-u-lg-4 am-u-sm-centered">
+			<div class="am-g">
+				<div class="am-u-md-4 am-u-sm-5 am-u-sm-centered">
+					<img class="am-round am-img-thumbnail" src="/static/img/logo.jpg"/>
+				</div>
+			</div>
+			<br>
+			<form action="/" method="post" class="am-form" data-am-validator>
+				<div class="am-form-group">
+					<div class="am-input-group">
+						<span class="am-input-group-label"><i class="am-icon-user"></i></span>
+						<input type="text" name="account" placeholder="学号/工号" required class="am-form-field am-input-lg">
+					</div>
+				</div>
+				<div class="am-form-group">
+					<div class="am-input-group">
+						<span class="am-input-group-label"><i class="am-icon-lock"></i></span>
+						<input type="password" name="pwd" placeholder="密码" required class="am-form-field am-input-lg">
+						<input type="hidden" name="login_key" value="{{.login_key}}">
+					</div>
+				</div>
+				<div class="am-form-group">
+					<div class="am-input-group">
+						<span class="am-input-group-label"><i class="am-icon-user-secret"></i></span>
+						<select name="type">
+							<option value="学生">学生</option>
+							<option value="教师">教师</option>
+							<option value="教务">教务</option>
+						</select>
+					</div>
+				</div>
+				{{if .fail}}
+				<div>
+					登录失败
+				</div>
+				{{end}}
+				<br>
+				<div class="am-form-group">
+					<button type="submit" class="am-btn am-btn-primary am-btn-lg am-btn-block am-radius">登陆</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/js/amazeui.min.js"></script>
+</body>
+</html>

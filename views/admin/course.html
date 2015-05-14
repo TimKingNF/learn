@@ -1,0 +1,55 @@
+
+	<div class="am-u-lg-10 am-u-md-9 am-u-sm-12">
+		<div class="am-container">
+			<br>
+			<strong class="am-text-primary am-text-lg">课程管理</strong> / <small>Course Management</small>
+			<hr>
+			<br>
+			<form action="" method="post" class="am-form am-form-inline" data-am-validator>
+				<div class="am-form-group am-form-file">
+					<button type="button" class="am-btn am-btn-success am-btn-sm">
+						<i class="am-icon-cloud-upload"></i> 选择要上传的EXCEL文件</button>
+					<input type="file" required multiple>
+				</div>
+				<div class="am-form-group">
+					<button type="submit" class="am-btn am-btn-default am-btn-sm">上传</button>
+				</div>
+			</form>
+			<hr>
+			<form action="" method="post" class="am-form am-form-horizontal" data-am-validator>
+				<div class="am-form-group">
+					<label for="xueqi" class="am-u-sm-2 am-form-label">学期</label>
+					<div class="am-u-sm-10 am-u-lg-6 am-u-end">
+						<select id="xueqi">
+							<option value="">2012上</option>
+							<option value="">2012下</option>
+							<option value="">2013上</option>
+						</select>
+					</div>
+				</div>
+				<div class="am-form-group">
+					<label for="coursename" class="am-u-sm-2 am-form-label">课程名</label>
+					<div class="am-u-sm-10 am-u-lg-6 am-u-end">
+						<input type="text" id="coursename" placeholder="课程名" required>
+					</div>
+				</div>
+				<div class="am-form-group">
+					<label for="teachername" class="am-u-sm-2 am-form-label">任课教师</label>
+					<div class="am-u-sm-10 am-u-lg-6 am-u-end">
+						<input type="text" id="teachername" placeholder="任课教师" required>
+					</div>
+				</div>
+				<div class="am-form-group">
+					<label for="classroom" class="am-u-sm-2 am-form-label">教室</label>
+					<div class="am-u-sm-10 am-u-lg-6 am-u-end">
+						<input type="text" id="classroom" placeholder="教室" required>
+					</div>
+				</div>
+				<div class="am-form-group">
+					<div class="am-u-sm-offset-2 am-u-sm-10 am-u-lg-6 am-u-end">
+						<button type="submit" class="am-btn am-btn-primary">确定</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>

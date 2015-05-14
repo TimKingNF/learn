@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>后台管理</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/amazeui.min.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/admin/common.css">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="Cache-Control" content="no-siteapp"/>
+	<meta name="mobile-web-app-capable" content="yes">
+	<!--[if lt IE 9]>
+	<script type="text/javascript">alert("sorry，low version of the browser does not support");</script>
+	<![endif]-->
+</head>
+<body>
+
+<!-- header start -->
+<header class="am-topbar am-topbar-inverse am-topbar-fixed-top clear">
+	<div class="am-topbar-brand">
+		<strong>大学生创新训练项目</strong> <small>后台</small>
+	</div>
+
+	<button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#nav'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+
+	<div class="am-collapse am-topbar-collapse am-topbar-right" id="nav">
+		<ul class="am-nav am-nav-pills am-topbar-nav">
+			<li><a href="/view/admin/setting"><span class="am-icon-cog"></span> 设置</a></li>
+			<li><a href="/signOut"><span class="am-icon-sign-in"></span> 登出</a></li>
+		</ul>
+	</div>
+</header>
+<!-- header end -->
+
+<!-- content start -->
+<a href="#aside" data-am-offcanvas class="am-icon-btn am-icon-bars aside-btn am-show-sm-only"></a>
+
+<div id="aside" class="am-offcanvas">
+	<div class="am-offcanvas-bar aside">
+		<ul class="nav">
+			<li><a href="/view/admin/index"><span class="am-icon-home"></span> 首页</a></li>
+			<li><a href="/view/admin/student"><span class="am-icon-users"></span> 学生管理</a></li>
+			<li><a href="/view/admin/teacher"><span class="am-icon-graduation-cap"></span> 教师管理</a></li>
+			<li><a href="/view/admin/course"><span class="am-icon-book"></span> 课程管理</a></li>
+			<li><a href="#"><span class="am-icon-cog"></span> 学风管理</a></li>
+			<li><a href="/view/admin/backup"><span class="am-icon-table"></span> 数据备份</a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="am-g clear">
+
+	<!-- aside -->
+	<div class="am-u-lg-2 am-u-md-3 am-show-sm-up clear aside am-hide-sm-only">
+		<ul class="nav">
+			<li><a href="/view/admin/index"><span class="am-icon-home"></span> 首页</a></li>
+			<li><a href="/view/admin/student"><span class="am-icon-users"></span> 学生管理</a></li>
+			<li><a href="/view/admin/teacher"><span class="am-icon-graduation-cap"></span> 教师管理</a></li>
+			<li><a href="/view/admin/course"><span class="am-icon-book"></span> 课程管理</a></li>
+			<li><a href="#"><span class="am-icon-cog"></span> 学风管理</a></li>
+			<li><a href="/view/admin/backup"><span class="am-icon-table"></span> 数据备份</a></li>
+		</ul>
+	</div>
+
+	<!-- content -->
+	{{.LayoutContent}}
+
+</div>
+<!-- content end -->
+
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/amazeui.min.js"></script>
+</body>
+</html>

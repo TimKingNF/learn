@@ -1,0 +1,43 @@
+.clear {
+    padding: 0;
+    margin: 0;
+}
+
+/* asideÑùÊ½ */
+.aside {
+    position: fixed;
+    height: 2000px;
+    background-color: #34495E;
+}
+
+.aside .nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.aside .nav li {
+    position: relative;
+    width: 100%;
+    line-height: 60px;
+    height: 60px;
+    cursor: pointer;
+    border-bottom: 1px solid #31343F;
+    text-indent: 0.4em;
+}
+.aside .nav li a {
+    color: #95A5A6;
+    font-weight: bold;
+}
+
+.aside .nav li:hover a {
+    color: #0E90D2;
+}
+
+.aside-btn {
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+    z-index: 9999;
+}
