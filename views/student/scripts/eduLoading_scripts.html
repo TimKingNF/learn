@@ -1,0 +1,35 @@
+{{template "scripts/signature_scripts.html" .}}
+<script type='text/javascript'>
+	$(function(){
+	 	var progress = $.AMUI.progress, loadingPanel = $(".loading-panel"), iswait = false;
+
+	 	if (window.WebSocket) {
+			conn = new WebSocket('ws://' + window.location.host+ '/api/student/eduLoading?id={{.student.Id}}&key={{.key}}&signature='+GetSignature(getCookie("token"), appid, sessid));
+			conn.onopen = function( evt) {
+				loadingPanel.append(getNotice("服务器连接成功..."))
+				progress.start();
+			}
+			conn.onerror = function (evt) {
+				loadingPanel.append(getNotice("服务器连接失败..."))
+				progress.done();
+			}
+			conn.onmessage = function(evt) {
+				var edata = JSON.parse(evt.data)
+				if (edata.Done) {
+					progress.done()
+					loadingPanel.append(getNotice("导入教务系统信息完成..."))
+					loadingPanel.append(getNotice("3秒后自动跳转..."))
+					// setTimeout(function() { window.location.href = "/view/student/table";}, 3000)		
+				} else {
+					loadingPanel.append(getNotice(edata.Data))
+				}
+			}
+		} else {
+			loadingPanel.append(getNotice("浏览器不支持websocket,请耐心等待系统导入教务系统信息"))
+		}
+	});
+
+	function getNotice(s) {
+		return new Date() + "："+ s + "<br />"
+	}
+</script>

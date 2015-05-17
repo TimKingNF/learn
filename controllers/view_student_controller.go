@@ -21,6 +21,7 @@ func (this *ViewStudentController) Prepare() {
 				appid, sessid := this.SetSignature()
 				this.Data["appid"] = appid
 				this.Data["sessid"] = sessid
+				this.Data["key"] = models.Str2Sha1(this.Ctx.Input.Cookie("beegosessionID"))
 				return
 			}
 		}
@@ -37,6 +38,7 @@ func (this *ViewStudentController) Table() {
 	this.Layout = "student/base.html"
 	this.LayoutSections = make(map[string]string)
 	this.LayoutSections["Head_html"] = "student/head/table_head.html"
+	this.LayoutSections["Scripts"] = "student/scripts/table_scripts.html"
 	this.TplNames = "student/table.html"
 }
 
@@ -53,9 +55,66 @@ func (this *ViewStudentController) Info() {
 // @Title 设置
 // @router /setting [get]
 func (this *ViewStudentController) Setting() {
-	this.Data["key"] = models.Str2Sha1(this.Ctx.Input.Cookie("beegosessionID"))
 	this.Layout = "student/base.html"
 	this.LayoutSections = make(map[string]string)
-	this.LayoutSections["Scripts"] = "student/scripts/signature_scripts.html"
+	this.LayoutSections["Scripts"] = "scripts/signature_scripts.html"
 	this.TplNames = "student/setting.html"
+}
+
+// @Title 修改个人头像
+// @router /uploadImg [get]
+func (this *ViewStudentController) UploadImg() {
+	this.Layout = "student/base.html"
+	this.LayoutSections = make(map[string]string)
+	this.LayoutSections["Scripts"] = "student/scripts/uploadimg_scripts.html"
+	this.TplNames = "student/uploadImg.html"
+}
+
+// @Tilte 消息
+// @router /notice [get]
+func (this *ViewStudentController) Notice() {
+	this.Layout = "student/base.html"
+	this.LayoutSections = make(map[string]string)
+	this.LayoutSections["Scripts"] = "student/scripts/notice_scripts.html"
+	this.LayoutSections["Head_html"] = "student/head/notice_head.html"
+	this.TplNames = "student/notice.html"
+}
+
+// @Title 登录教务系统
+// @router /login [get]
+func (this *ViewStudentController) Login() {
+	//	recevie data
+	user := this.Data["student"]
+	if user != nil && user.(*models.Student).IsEdu {
+		this.Redirect("/view/student/eduManage", 302)
+		this.StopRun()
+	}
+	//	取出 refer
+	refer := this.Ctx.Request.Referer()
+	if len(refer) > 0 && refer == "http://"+models.Host+":"+models.Port+"/view/student/login" {
+		this.Data["fail"] = true
+	}
+	this.Layout = "student/base.html"
+	this.LayoutSections = make(map[string]string)
+	this.LayoutSections["Head_html"] = "student/head/info_head.html"
+	this.LayoutSections["Scripts"] = "scripts/signature_scripts.html"
+	this.TplNames = "student/login.html"
+}
+
+// @Title 教务系统导入
+// @router /eduLoading [get]
+func (this *ViewStudentController) EduLoading() {
+	this.Layout = "student/base.html"
+	this.LayoutSections = make(map[string]string)
+	this.LayoutSections["Scripts"] = "student/scripts/eduLoading_scripts.html"
+	this.TplNames = "student/eduLoading.html"
+}
+
+// @Title 教务系统管理
+// @router /eduManage [get]
+func (this *ViewStudentController) EduManage() {
+	//	recevie data
+
+	this.Layout = "student/base.html"
+	this.TplNames = "student/eduManage.html"
 }

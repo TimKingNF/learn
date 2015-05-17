@@ -1,0 +1,36 @@
+<br><br><br>
+<div class="am-container">
+    <div class="am-u-lg-5 am-u-md-7 am-u-sm-11 am-u-sm-centered">
+        <form action="/api/student/login" method="post" class="am-form" data-am-validator>
+            <div class="am-form-group">
+                <img class="am-img-thumbnail am-round am-center" src="/static/img/logo.jpg" />
+            </div>
+            <br><br>
+            <div class="am-form-group">
+                <div class="am-input-group">
+                    <span class="am-input-group-label"><i class="am-icon-user"></i></span>
+                    <input type="text" placeholder="学号" value="{{.student.Id}}" disabled />
+                    <input type="hidden" name='id' value="{{.student.Id}}">
+                    <input type="hidden" name='key' value="{{.key}}">
+                    <input type="hidden" name='signature' class='signature'>
+                </div> 
+            </div>
+
+            <div class="am-form-group">
+                <div class="am-input-group">
+                    <span class="am-input-group-label"><i class="am-icon-lock"></i></span>
+                     <input type="password" name="pwd" placeholder="密码" required/>
+                </div>
+            </div>
+            {{if .fail}}
+                <div class="am-alert am-alert-danger" data-am-alert>
+                  <button type="button" class="am-close">&times;</button>
+                  <p>登录失败...</p>
+                </div>
+            {{end}}
+            <div class="am-form-group">
+                <button class="am-btn am-btn-primary am-btn-lg am-radius am-btn-block">登陆教务系统</button>
+            </div>
+        </form>
+    </div>
+</div>

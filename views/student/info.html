@@ -1,6 +1,6 @@
 <div class="am-g bg-primary ">
 	<div class="am-u-lg-2 am-u-md-3 am-u-sm-4 am-u-sm-centered am-padding-vertical-xl">
-		<img class="am-round am-img-thumbnail" src="/static/img/avatar.jpeg" />
+		<img class="am-round am-img-thumbnail" src="{{.student.Headimgurl}}" />
 	</div>
 </div>
 <br><br>
@@ -8,12 +8,13 @@
 	<fieldset>
 		<legend>个人信息</legend>
 		<ul class="am-avg-md-3 am-avg-sm-2 am-thumbnails">
-			<li>姓名：张三</li>
-			<li>性别：男</li>
-			<li>学号：122011046</li>
-			<li>系别：电子通信与软件工程系</li>
-			<li>专业：计算机科学与技术</li>
-			<li>班级：计算机一班</li>
+			<li>姓名：{{.student.Name}}</li>
+			<li>性别：{{.student.Sex | getSex}}</li>
+			<li>学号：{{.student.Id}}</li>
+			<li>系别：{{if .student.Department}}{{.student.Department.Name}}{{else}}未知{{end}}</li>
+			<li>专业：{{if .student.Major}}{{.student.Major.Name}}{{else}}未知{{end}}</li>
+			<li>班级：{{if .student.Class}}{{.student.Class.Name}}{{else}}未知{{end}}</li>
+			<li>入学日期: {{if not (eq .student.EnterSchoolDate 0)}}{{.student.EnterSchoolDate}}{{else}}未知{{end}}</li>
 		</ul>
 	</fieldset>
 

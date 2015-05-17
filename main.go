@@ -19,7 +19,8 @@ func init() {
 		models.Info("main", err)
 	}
 	//	注册数据库表模型
-	orm.RegisterModel(new(models.Student), new(models.Department), new(models.Major), new(models.Class), new(models.Teacher), new(models.Admin))
+	orm.RegisterModel(new(models.Student), new(models.Department), new(models.Major), new(models.Class), new(models.Teacher), new(models.Admin), new(models.Term))
+	orm.RegisterModel(new(models.TeacherCourse), new(models.Course), new(models.StudentCourse), new(models.StudentGrade))
 	err = orm.RunSyncdb("default", false, false) //	运行数据库
 	if err != nil {
 		models.Info("main", err)
@@ -28,7 +29,8 @@ func init() {
 
 func main() {
 	//	注册文件目录
-	beego.SetStaticPath("UPLOADS", "uploads")
+	beego.SetStaticPath("UPLOADS", "UPLOADS")
+	beego.SetStaticPath("EDU", "EDU")
 
 	//	启动session
 	beego.SessionOn = true

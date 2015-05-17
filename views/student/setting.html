@@ -6,15 +6,17 @@
 		<br>
 		<form action="/api/student/updatePassword" method="post" class="am-form" data-am-validator>
 			<div class="am-u-sm-12 am-u-md-9 am-u-lg-6">
+				{{if .student.Password}}
 				<div class="am-form-group">
 					<label for="oldpwd" class="am-form-label">原密码</label>
 					<input type="password" name='oldpwd' id="oldpwd" required pattern="^[A-Za-z0-9]+$" maxlength="20" minlength="4" placeholder="原密码">
-					<input type="hidden" name='key' value="{{.key}}">
-					<input type="hidden" name='signature' class='signature'>
 				</div>
+				{{end}}
 				<div class="am-form-group">
 					<label for="newpwd" class="am-form-label">新密码</label>
 					<input type="password" name='newpwd' id="newpwd" required pattern="^[A-Za-z0-9]+$" maxlength="20" minlength="4" placeholder="新密码">
+					<input type="hidden" name='key' value="{{.key}}">
+					<input type="hidden" name='signature' class='signature'>
 					<small>请输入4-20位的数组字母组合的密码</small>
 				</div>
 				<div class="am-form-group">

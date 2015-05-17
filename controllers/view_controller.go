@@ -4,6 +4,7 @@ import (
 	// "github.com/astaxie/beego"
 	"fmt"
 	"learn/models"
+	"strconv"
 )
 
 type ViewController struct {
@@ -52,6 +53,48 @@ func (this *ViewController) Login() {
 
 	switch user_type {
 	case "学生":
+		edu := this.GetString("edu")
+		if edu == "on" {
+			if !models.StudentExist(account) {
+				if data, ok, cookies, _ := models.EduLogin(account, pwd, user_type); ok {
+					if _, err := models.EduGetStudentProfile(data, cookies); err == nil {
+						if err = models.AddStudent(&models.Student{Id: account, EduPwd: pwd}); err == nil {
+							//	设置session
+							if this.GetSession("id") != nil {
+								this.DelSession("id")
+							}
+							this.SetSession("id", account)
+							if this.GetSession("type") != nil {
+								this.DelSession("type")
+							}
+							this.SetSession("type", user_type)
+
+							this.Redirect("/view/student/eduLoading", 302)
+							this.StopRun()
+						}
+					}
+				}
+			} else {
+				user, err := models.GetStudentById(account)
+				if err == nil {
+					if user.EduPwd == pwd {
+						//	设置session
+						if this.GetSession("id") != nil {
+							this.DelSession("id")
+						}
+						this.SetSession("id", account)
+						if this.GetSession("type") != nil {
+							this.DelSession("type")
+						}
+						this.SetSession("type", user_type)
+
+						//	login success
+						this.Redirect("/view/student/table", 302)
+						this.StopRun()
+					}
+				}
+			}
+		}
 		if models.StudentExist(account) == true {
 			user, err := models.GetStudentById(account)
 			if err == nil {
@@ -73,8 +116,9 @@ func (this *ViewController) Login() {
 			}
 		}
 	case "教师":
-		if models.TeacherExist(account) == true {
-			user, err := models.GetTeacherById(account)
+		id, _ := strconv.ParseInt(account, 10, 64)
+		if models.TeacherExist(id) == true {
+			user, err := models.GetTeacherById(id)
 			if err == nil {
 				if user.Password == pwd {
 					//	设置session
@@ -118,6 +162,10 @@ func (this *ViewController) Login() {
 
 	this.Redirect("/", 302)
 	this.StopRun()
+}
+
+func (this *ViewController) Finish() {
+	this.Render() //	加载模板
 }
 
 // @Title 退出

@@ -7,6 +7,15 @@
 		</div>
 	</div>
 {{end}}
+{{if not .student.Password}}
+	<div class='am-container'>
+		<div class="am-alert am-alert-danger" data-am-alert>
+		  <button type="button" class="am-close">&times;</button>
+		  <p><a href="/view/student/setting">您还没有设置密码...点击此处设置</a></p>
+		</div>
+	</div>
+{{end}}
+
 <div class="am-container">
 	<table class="tb am-table-bordered">
 		<thead>
@@ -21,63 +30,55 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td><small>08:00</small><br><b>1</b></td>
+				<td><small>08:00</small><br>1</td>
 				<td></td>
 				<td rowspan="3" class="tb-blue tb-class">
-					系统分析与设计<br>
+					<span>系统分析与设计</span><br>
 					2实203
 				</td>
 				<td rowspan="2" class="tb-yellow tb-class">
-					电子商务<br>
+					<span>电子商务</span><br>
 					1教201
 				</td>
 				<td></td>
 				<td></td>
 			</tr>
 			<tr>
-				<td><small>08:50</small><br><b>2</b></td>
+				<td><small>08:50</small><br>2</td>
 				<td></td>
 				<td></td>
 				<td></td>
 			</tr>
 			<tr>
-				<td><small>09:45</small><br><b>3</b></td>
+				<td><small>09:45</small><br>3</td>
 				<td rowspan="3" class="tb-green tb-class">
-					嵌入式系统与应用<br>
+					<span>嵌入式系统与应用</span><br>
 					1实205
 				</td>
 				<td rowspan="3" class="tb-violet tb-class">
-					ASP.NET技术<br>
+					<span>ASP.NET技术</span><br>
 					2实203
 				</td>
 				<td rowspan="3" class="tb-blue-green tb-class">
-					多媒体技术<br>
+					<span>多媒体技术</span><br>
 					2实106
 				</td>
 				<td></td>
 			</tr>
 			<tr>
-				<td><small>10:35</small><br><b>4</b></td>
+				<td><small>10:35</small><br>4</td>
 				<td rowspan="2" class="tb-red tb-class">
-					管理学基础<br>
+					<span>管理学基础</span><br>
 					11教206
 				</td>
 				<td></td>
 			</tr>
 			<tr>
-				<td><small>11:20</small><br><b>5</b></td>
+				<td><small>11:20</small><br>5</td>
 				<td></td>
 			</tr>
 			<tr>
-				<td><small>12:50</small><br><b>6</b></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td><small>13:40</small><br><b>7</b></td>
+				<td><small>12:50</small><br>6</td>
 				<td></td>
 				<td></td>
 				<td></td>
@@ -85,63 +86,71 @@
 				<td></td>
 			</tr>
 			<tr>
-				<td><small>14:30</small><br><b>8</b></td>
+				<td><small>13:40</small><br>7</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><small>14:30</small><br>8</td>
 				<td rowspan="2" class="tb-yellow tb-class">
-					数字图像处理<br>
+					<span>数字图像处理</span><br>
 					1教203
 				</td>
 				<td rowspan="2" class="tb-origin tb-class">
-					网络设计与管理综合实训<br>
+					<span>网络设计与管理综合实训</span><br>
 					1实305
 				</td>
 				<td rowspan="3" class="tb-green tb-class">
-					软件测试与项目管理<br>
+					<span>软件测试与项目管理</span><br>
 					2实106
 				</td>
 				<td rowspan="3" class="tb-black tb-class">
-					软件与数据库开发实训<br>
+					<span>软件与数据库开发实训</span><br>
 					2实105
 				</td>
 				<td></td>
 			</tr>
 			<tr>
-				<td><small>15:15</small><br><b>9</b></td>
+				<td><small>15:15</small><br>9</td>
 				<td></td>
 			</tr>
 			<tr>
-				<td><small>16:10</small><br><b>10</b></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td><small>16:55</small><br><b>11</b></td>
-				<td></td>
-				<td></td>
+				<td><small>16:10</small><br>10</td>
 				<td></td>
 				<td></td>
 				<td></td>
 			</tr>
 			<tr>
-				<td><small>18:45</small><br><b>12</b></td>
+				<td><small>16:55</small><br>11</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><small>18:45</small><br>12</td>
 				<td></td>
 				<td></td>
 				<td rowspan="3" class="tb-red tb-class">
-					Java高级编程<br>
+					<span>Java高级编程</span><br>
 					2实203
 				</td>
 				<td></td>
 				<td></td>
 			</tr>
 			<tr>
-				<td><small>19:35</small><br><b>13</b></td>
+				<td><small>19:35</small><br>13</td>
 				<td></td>
 				<td></td>
 				<td></td>
 				<td></td>
 			</tr>
 			<tr>
-				<td><small>20:15</small><br><b>14</b></td>
+				<td><small>20:15</small><br>14</td>
 				<td></td>
 				<td></td>
 				<td></td>
@@ -150,4 +159,19 @@
 		</tbody>
 	</table>
 	<br>
+</div>
+<div class="am-modal am-modal-no-btn" tabindex="-1" id="modal">
+	<div class="am-modal-dialog">
+		<div class="am-modal-hd">
+			<span id="course-name">课程</span>
+			<a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+		</div>
+		<div class="am-modal-bd">
+			<br>
+			<div class="am-container am-padding-horizontal-lg am-padding-bottom-sm">
+				<a href="javascript: void(0)" class="am-btn am-btn-block am-btn-success">作业管理</a>
+				<a href="javascript: void(0)" class="am-btn am-btn-block am-btn-danger">课堂记录</a>
+			</div>
+		</div>
+	</div>
 </div>

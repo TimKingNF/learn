@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 	<meta charset="UTF-8">
-	<title>课表</title>
+	<title>学风管理系统</title>
 	<link rel="stylesheet" type="text/css" href="/static/css/amazeui.min.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/student/common.css">
 	{{.Head_html}}
@@ -26,7 +26,7 @@
 
 		<div class="am-collapse am-topbar-collapse" id="nav">
 			<div class="am-topbar-right">
-				<a href="#" class="am-btn am-btn-primary am-topbar-btn am-btn-sm"><span class="am-icon-bell"></span> <span class="am-badge am-badge-danger am-radius">6</span></a>
+				<a href="/view/student/notice" class="am-btn am-btn-primary am-topbar-btn am-btn-sm"><span class="am-icon-bell"></span> <span class="am-badge am-badge-danger am-radius">{{.noticeNum}}</span></a>
 				<div class="am-dropdown" data-am-dropdown="{boundary: '.am-topbar'}">
 					<button type="button" class="am-btn am-btn-primary am-topbar-btn am-btn-sm am-dropdown-toggle" data-am-dropdown-toggle><span class="am-icon-user"></span></button>
 					<ul class="am-dropdown-content">
@@ -48,19 +48,22 @@
 	<div class="am-offcanvas-bar aside">
 		<div class="am-g aside-head">
 			<div class="am-u-sm-5">
-				<img class="am-round am-img-thumbnail" src="{{.student.Headimgurl}}" />
+				<img class="am-round am-img-thumbnail" src="{{if .student.Headimgurl}}{{.student.Headimgurl}}{{else}}/static/img/avatar.jpeg{{end}}" />
 			</div>
 			<div class="am-u-sm-7">
 				<b class="am-text-lg">{{.student.Name}}</b><br>
 				<span>{{.student.Id}}</span><br>
-				<span>计算机一班</span>
+				<span>{{if .student.Class}}{{.student.Class.Name}}{{else}}未知{{end}}</span>
 			</div>
 		</div>
 		<ul class="aside-nav">
-			<li><a href="/view/student/table"><span class="am-icon-home"></span> 课程表</a></li>
-			<li><a href="#"><span class="am-icon-home"></span> 登入教务系统</a></li>
-			<li><a href="#"><span class="am-icon-home"></span> 修改个人头像</a></li>
-
+			<li><a href="/view/student/info"><span class="am-icon-home"></span> 个人信息</a></li>
+			<li><a href="/view/student/setting"><span class="am-icon-cog"></span> 修改密码</a></li>
+			<li><a href="/view/student/notice"><span class="am-icon-bell"></span> 个人信箱 <span class="am-badge am-badge-danger am-radius">{{.noticeNum}}</span></a></li>
+			<li><a href="/view/student/table"><span class="am-icon-table"></span> 我的课程表</a></li>
+			<li><a href="/view/student/login"><span class="am-icon-sign-in"></span> 登入教务系统</a></li>
+			<li><a href="/view/student/uploadImg"><span class="am-icon-image"></span> 修改个人头像</a></li>
+			<li><a href="/signOut"><span class="am-icon-sign-out"></span> 登出</a></li>
 		</ul>
 	</div>
 </div>
