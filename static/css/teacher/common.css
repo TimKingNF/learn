@@ -1,3 +1,7 @@
+.pad-l-r {
+	padding: 0 5px;
+}
+
 /* 回到顶部样式 */
 .retop {
 	position: fixed;

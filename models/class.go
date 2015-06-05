@@ -30,12 +30,12 @@ func ClassExist(name string) bool {
 }
 
 func GetClassById(id int64) (*Class, error) {
-	Class := &Class{Id: id}
-	err := orm.NewOrm().Read(Class, "Id")
+	var class Class
+	err := orm.NewOrm().QueryTable("Class").Filter("Id", id).RelatedSel().One(&class)
 	if err != nil {
 		return nil, ErrorInfo("GetClassById", err)
 	}
-	return Class, nil
+	return &class, nil
 }
 
 func GetClassByName(name string) (*Class, error) {
@@ -64,4 +64,14 @@ func AddClass(ptr *Class) (int64, error) {
 		return 0, ErrorInfo("AddClass", err)
 	}
 	return id, nil
+}
+
+func GetClassesByTeacherCourse(in *TeacherCourse) ([]*Class, error) {
+	if in == nil {
+		return nil, ErrorInfo("GetClassesByTeacherCourse", "data is nil")
+	}
+	if _, err := orm.NewOrm().LoadRelated(in, "Classes"); err != nil {
+		return nil, ErrorInfo("GetClassesByTeacherCourse", err)
+	}
+	return in.Classes, nil
 }

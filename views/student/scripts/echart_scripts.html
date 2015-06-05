@@ -1,0 +1,149 @@
+<script type="text/javascript" src="/static/js/student/echarts-all.js"></script>
+<script type="text/javascript">
+	var optionLine = {
+		tooltip : {
+			trigger: 'axis'
+		},
+		legend: {
+	        data:['绩点', '成绩']
+	    },
+		xAxis : [
+			{
+				type : 'category',
+				boundaryGap : false,
+				data : [
+					{{range $key, $val := .term_list}}
+						"{{$val.Number}}\n{{$val.StartYear | lowerYear}}-{{$val.EndYear | lowerYear}}",
+					{{end}}
+				]
+			}
+		],
+		yAxis : [
+			{
+				type : 'value',
+				axisLabel : {
+					formatter: '{value}'
+				}
+			}
+		],
+		toolbox: {
+	        show : true,
+	        feature : {
+	            magicType : {show: true, type: ['line', 'bar']},
+	            restore : {show: true},
+	            saveAsImage : {show: true}
+	        }
+	    },
+		series : [
+			{
+				name:'绩点',
+				type:'line',
+				data:[
+					{{range $key, $val := .term_list}}
+						{{if not (eq ((index $val.Orgs "s_course") | getCourseAverageGPA) "0")}}
+							parseFloat({{(index $val.Orgs "s_course") | getCourseAverageGPA}}),
+						{{end}}
+					{{end}}
+				],
+				markPoint : {
+					data : [
+						{type : 'max', name: '最大值'}
+					]
+				},
+				markLine : {
+					data : [
+						{type : 'average', name: '平均值'}
+					]
+				}
+			},
+			{
+				name:'成绩',
+				type:'line',
+				data:[
+					{{range $key, $val := .term_list}}
+						{{if not (eq ((index $val.Orgs "s_course") | getCourseAverageGrade) 0)}}
+							{{(index $val.Orgs "s_course") | getCourseAverageGrade}},
+						{{end}}
+					{{end}}
+				],
+				markPoint : {
+					data : [
+						{type : 'max', name: '最大值'}
+					]
+				},
+				markLine : {
+					data : [
+						{type : 'average', name: '平均值'}
+					]
+				}
+			}
+		]
+	};
+	var optionHomeworkLine = {
+        tooltip : {
+            trigger: 'axis'
+        },
+        xAxis : [
+            {
+                type : 'category',
+                data : ['A','B','C','D','E']
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value'
+            }
+        ],
+        series : [
+            {
+                name:'次数',
+                type:'bar',
+                data: [
+                	{{range $key, $val := .term_list | getHomeworkByTerm | getHomeworkByStudentCourses | getHomeworkGrade}}
+                		parseInt({{$val}}),
+                	{{end}}
+                ]
+            }
+        ]
+    };
+    var optionCheckLine = {
+        tooltip : {
+            trigger: 'axis'
+        },
+        xAxis : [
+            {
+                type : 'category',
+                data : ['未到','迟到','已到','请假']
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value'
+            }
+        ],
+        series : [
+            {
+                name:'次数',
+                type:'bar',
+                data:[
+                    {{range $key, $val := index .term_list | getCheckByTerm | getCheckByStudentCourses | getStudentCheckInChinese}}
+                        parseInt({{$val}}),
+                    {{end}}
+                ]
+            }
+        ]
+    };
+</script>
+<script type="text/javascript">
+	$(function() {
+	    echarts.init( document.getElementById( 'line') ).setOption( optionLine );
+	    echarts.init( document.getElementById( 'homework-line') ).setOption( optionHomeworkLine );
+	    echarts.init( document.getElementById( 'check-line') ).setOption( optionCheckLine );
+
+	    $( window).resize( function() {
+	        echarts.init( document.getElementById( 'line') ).setOption( optionLine );
+	    	echarts.init( document.getElementById( 'homework-line') ).setOption( optionHomeworkLine );
+	    	echarts.init( document.getElementById( 'check-line') ).setOption( optionCheckLine );
+	    });
+	})
+</script>

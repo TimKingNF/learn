@@ -1,0 +1,69 @@
+<script type="text/javascript" src="/static/js/teacher/echarts-all.js"></script>
+<script type="text/javascript">
+    var optionHomework = {
+        tooltip : {
+            trigger: 'axis'
+        },
+        xAxis : [
+            {
+                type : 'category',
+                data : ['A','B','C','D','E']
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value'
+            }
+        ],
+        series : [
+            {
+                name:'次数',
+                type:'bar',
+                data: [
+                    {{range $key, $val := (index .t_course.Orgs "s_homeworks") | getHomeworkGrade}}
+                        parseInt({{$val}}),
+                    {{end}}
+                ]
+            }
+        ]
+    };
+    var optionLine = {
+        tooltip : {
+            trigger: 'axis'
+        },
+        xAxis : [
+            {
+                type : 'category',
+                data : ['未到','迟到','已到','请假']
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value'
+            }
+        ],
+        series : [
+            {
+                name:'次数',
+                type:'bar',
+                data:[
+                    {{range $key, $val := index .t_course.Orgs "s_checks" | getStudentCheckInChinese}}
+                        parseInt({{$val}}),
+                    {{end}}
+                ]
+            }
+        ]
+    };
+</script>
+<script type="text/javascript">
+    $( function () {
+        echarts.init( document.getElementById( 'homework-line') ).setOption( optionHomework );
+        echarts.init( document.getElementById( 'check-line') ).setOption( optionLine );
+
+        $( window).resize( function() {
+            echarts.init( document.getElementById( 'homework-line') ).setOption( optionHomework );
+            echarts.init( document.getElementById( 'check-line') ).setOption( optionLine );
+
+        });
+    });
+</script>

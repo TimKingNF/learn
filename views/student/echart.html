@@ -1,0 +1,76 @@
+<div class="am-container">
+	<br>
+	<strong class="am-text-primary am-text-lg">学风统计</strong> / <small>User Setting</small>
+	<hr>
+    <fieldset>
+		<legend>成绩统计</legend>
+		<div id="line" class="h-300"></div>
+        <table class="am-table am-table-bordered am-table-radius am-table-striped am-text-sm">
+            <thead>
+                <tr>
+                    <th>共获得学分</th>
+                    <th>共获得绩点</th>
+                    <th>平均成绩</th>
+                    <th>平均绩点</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{.term_list | getAllCourseCredit}}</td>
+                    <td>{{.term_list | getAllCourseGPA}}</td>
+                    <td>{{.term_list | getAllCourseAverageGrade}}</td>
+                    <td>{{.term_list | getAllCourseAverageGPA}}</td>
+                </tr>
+            </tbody>
+        </table>
+	</fieldset>
+
+    <fieldset>
+        <legend>作业统计</legend>
+        <div id="homework-line" class="h-300"></div>
+        <table class="am-table am-table-bordered am-table-radius am-table-striped am-text-sm">
+            <thead>
+                <tr>
+                    <th>交作业次数</th>
+                    <th>A评价</th>
+                    <th>B评价</th>
+                    <th>C评价</th>
+                    <th>D评价</th>
+                    <th>E评价</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{.term_list | getHomeworkByTerm | getHomeworkByStudentCourses | len}}</td>
+                    {{range $key, $val := .term_list | getHomeworkByTerm | getHomeworkByStudentCourses | getHomeworkGrade}}
+                        <td>{{$val}}次</td>
+                    {{end}}                    
+                </tr>
+            </tbody>
+        </table>
+    </fieldset>
+
+    <fieldset>
+        <legend>考勤统计</legend>
+        <div id="check-line" class="h-300"></div>
+        <table class="am-table am-table-bordered am-table-radius am-table-striped am-text-sm">
+            <thead>
+                <tr>
+                    <th>共签到次数</th>
+                    <th>未到</th>
+                    <th>迟到</th>
+                    <th>已到</th>
+                    <th>请假</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{.term_list | getCheckByTerm | getCheckByStudentCourses | len}}</td>
+                    {{range $key, $val := index .term_list | getCheckByTerm | getCheckByStudentCourses | getStudentCheckInChinese}}
+                        <td>{{$val}}</td>
+                    {{end}}
+                </tr>
+            </tbody>
+        </table>
+    </fieldset>
+</div>

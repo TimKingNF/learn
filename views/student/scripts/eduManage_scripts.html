@@ -1,0 +1,10 @@
+<script  type='text/javascript'>
+	$(function() {
+	    $('#allRefresh').click(function() {
+	        $(this).children('i').addClass('am-icon-spin');
+	        refreshList.each(function() {
+	            $(this).children('i').addClass('am-icon-spin');
+	        });
+	    });
+	});
+</script>

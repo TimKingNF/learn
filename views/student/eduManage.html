@@ -1,5 +1,294 @@
 {{if .student.IsEdu}}
-<a href="/view/student/eduLoading">loading</a>
-{{else}}
+	<div class="am-container">
+	    <br>
+	    <ul class="am-list am-list-static am-list-border refresh-list">
+	        
 
+	        <li>
+	            <strong>成功操作 {{GetEduLogLen .userinfo .department_log .major_log .class_log .term_log .course_log .teacher_log .t_course_log .s_course_log .t_course_class_log .s_course_grade_log}} 条记录，
+	            失败操作 {{.failed_log | len}} 条记录</strong>
+	        </li>
+
+
+	        <li class="am-panel-group" id="accordion">
+	        	<div class="am-panel am-panel-default">
+		            <div class="am-panel-hd" data-am-collapse="{parent: '#accordion', target: '#do-not-say-1'}">
+		           		<span class="am-badge am-badge-danger am-radius">{{if .userinfo}} 1 {{end}}</span>
+	            		<strong  class="am-panel-title">个人信息</strong>
+	            	</div>
+		        </div>
+				<div id="do-not-say-1" class="am-panel-collapse am-collapse">
+		            <div class="am-panel-bd loading-panel">
+		            	{{if .userinfo}}
+			            	<div class="am-u-lg-2 am-u-md-3 am-u-sm-4 am-u-sm-centered am-padding-vertical-xl">
+								<img class="am-round am-img-thumbnail" src="{{index .userinfo "头像"}}" />
+							</div>
+							{{range $key, $val := .userinfo}}
+								{{if not (eq $key "头像")}}
+									{{if $val}}
+										<strong>{{$key}}</strong> : {{$val}} <br>
+									{{end}}	
+								{{end}}
+							{{end}}
+						{{else}}
+							暂无数据
+						{{end}}
+		            </div>
+		        </div>
+	        </li>
+
+
+			<li class="am-panel-group" id="accordion">
+	        	<div class="am-panel am-panel-default">
+		            <div class="am-panel-hd" data-am-collapse="{parent: '#accordion', target: '#do-not-say-11'}">
+		           		<span class="am-badge am-badge-danger am-radius">{{if .term_log}} {{.term_log | len}} {{end}}</span>
+	            		<strong  class="am-panel-title">学期</strong>
+	            	</div>
+		        </div>
+				<div id="do-not-say-11" class="am-panel-collapse am-collapse">
+		            <div class="am-panel-bd loading-panel">
+		            	{{if .term_log}}
+							{{range $key, $val := .term_log}}
+								【{{date $val.ControlTime "Y-m-d H:i:s"}}】 添加了一个新的学期：学年度 【{{index ($val.Content | Map2Json) "学年度"}}】
+								学期 【{{index ($val.Content | Map2Json) "学期"}}】
+								<br>
+							{{end}}
+		            	{{else}}
+							暂无数据
+						{{end}}
+		            </div>
+		        </div>
+	        </li>
+
+
+	        <li class="am-panel-group" id="accordion">
+	           <div class="am-panel am-panel-default">
+		            <div class="am-panel-hd" data-am-collapse="{parent: '#accordion', target: '#do-not-say-2'}">
+		           		<span class="am-badge am-badge-danger am-radius">{{if .department_log}} {{.department_log | len}} {{end}}</span>
+	            		<strong  class="am-panel-title">系</strong>
+	            	</div>
+		        </div>
+				<div id="do-not-say-2" class="am-panel-collapse am-collapse">
+		            <div class="am-panel-bd loading-panel">
+		            	{{if .department_log}}
+							{{range $key, $val := .department_log}}
+								【{{date $val.ControlTime "Y-m-d H:i:s"}}】 添加了一个新的系：{{$val.Content}} <br>
+							{{end}}
+		            	{{else}}
+							暂无数据
+						{{end}}
+		            </div>
+		        </div>
+	        </li>
+
+
+	        <li class="am-panel-group" id="accordion">
+	           <div class="am-panel am-panel-default">
+		            <div class="am-panel-hd">
+		           		<span class="am-badge am-badge-danger am-radius">{{if .major_log}} {{.major_log | len}} {{end}}</span>
+	            		<strong  class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-3'}">专业</strong>
+	            	</div>
+		        </div>
+				<div id="do-not-say-3" class="am-panel-collapse am-collapse">
+		            <div class="am-panel-bd loading-panel">
+		            	{{if .major_log}}
+							{{range $key, $val := .major_log}}
+								【{{date $val.ControlTime "Y-m-d H:i:s"}}】 添加了一个新的专业：{{$val.Content}} <br>
+							{{end}}
+		            	{{else}}
+							暂无数据
+						{{end}}
+		            </div>
+		        </div>
+	        </li>
+
+
+	        <li class="am-panel-group" id="accordion">
+	           <div class="am-panel am-panel-default">
+		            <div class="am-panel-hd">
+		           		<span class="am-badge am-badge-danger am-radius">{{if .class_log}} {{.class_log | len}} {{end}}</span>
+	            		<strong  class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-4'}">班级</strong>
+	            	</div>
+		        </div>
+				<div id="do-not-say-4" class="am-panel-collapse am-collapse">
+		            <div class="am-panel-bd loading-panel">
+		            	{{if .class_log}}
+							{{range $key, $val := .class_log}}
+								【{{date $val.ControlTime "Y-m-d H:i:s"}}】 添加了一个新的班级：{{$val.Content}} <br>
+							{{end}}
+		            	{{else}}
+							暂无数据
+						{{end}}
+		            </div>
+		        </div>
+	        </li>
+	       
+
+	        <li class="am-panel-group" id="accordion">
+	           <div class="am-panel am-panel-default">
+		            <div class="am-panel-hd">
+		           		<span class="am-badge am-badge-danger am-radius">{{if .course_log}} {{.course_log | len}} {{end}}</span>
+	            		<strong  class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-6'}">课程</strong>
+	            	</div>
+		        </div>
+				<div id="do-not-say-6" class="am-panel-collapse am-collapse">
+		            <div class="am-panel-bd loading-panel">
+		            	{{if .course_log}}
+							{{range $key, $val := .course_log}}
+								【{{date $val.ControlTime "Y-m-d H:i:s"}}】 添加了一个新的课程：{{$val.Content}} <br>
+							{{end}}
+		            	{{else}}
+							暂无数据
+						{{end}}
+		            </div>
+		        </div>
+	        </li>
+
+
+	        <li class="am-panel-group" id="accordion">
+	           <div class="am-panel am-panel-default">
+		            <div class="am-panel-hd">
+		           		<span class="am-badge am-badge-danger am-radius">{{if .teacher_log}} {{.teacher_log | len}} {{end}}</span>
+	            		<strong  class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-5'}">教师</strong>
+	            	</div>
+		        </div>
+				<div id="do-not-say-5" class="am-panel-collapse am-collapse">
+		            <div class="am-panel-bd loading-panel">
+		            	{{if .teacher_log}}
+							{{range $key, $val := .teacher_log}}
+								【{{date $val.ControlTime "Y-m-d H:i:s"}}】 添加了一个新的教师：{{$val.Content}} <br>
+							{{end}}
+		            	{{else}}
+							暂无数据
+						{{end}}
+		            </div>
+		        </div>
+	        </li>
+
+
+	        <li class="am-panel-group" id="accordion">
+	           <div class="am-panel am-panel-default">
+		            <div class="am-panel-hd">
+		           		<span class="am-badge am-badge-danger am-radius">{{if .t_course_log}} {{.t_course_log | len}} {{end}}</span>
+	            		<strong  class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-7'}">教师课表</strong>
+	            	</div>
+		        </div>
+				<div id="do-not-say-7" class="am-panel-collapse am-collapse">
+		            <div class="am-panel-bd loading-panel">
+		            	{{if .t_course_log}}
+							{{range $key, $val := .t_course_log}}
+								【{{date $val.ControlTime "Y-m-d H:i:s"}}】 添加了一个新的教师课表：{{$val.Content}} <br>
+							{{end}}
+		            	{{else}}
+							暂无数据
+						{{end}}
+		            </div>
+		        </div>
+	        </li>
+
+
+			 <li class="am-panel-group" id="accordion">
+	           <div class="am-panel am-panel-default">
+		            <div class="am-panel-hd">
+		           		<span class="am-badge am-badge-danger am-radius">{{if .t_course_log}} {{.t_course_log | len}} {{end}}</span>
+	            		<strong  class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-12'}">课表班级</strong>
+	            	</div>
+		        </div>
+				<div id="do-not-say-12" class="am-panel-collapse am-collapse">
+		            <div class="am-panel-bd loading-panel">
+		            	{{if .t_course_log}}
+							{{range $key, $val := .t_course_log}}
+								【{{date $val.ControlTime "Y-m-d H:i:s"}}】 添加了一个新的课表班级：{{$val.Content}} <br>
+							{{end}}
+		            	{{else}}
+							暂无数据
+						{{end}}
+		            </div>
+		        </div>
+	        </li>
+
+
+	        <li class="am-panel-group" id="accordion">
+	           <div class="am-panel am-panel-default">
+		            <div class="am-panel-hd">
+		           		<span class="am-badge am-badge-danger am-radius">{{if .s_course_log}} {{.s_course_log | len}} {{end}}</span>
+	            		<strong  class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-8'}">学生课表</strong>
+	            	</div>
+		        </div>
+				<div id="do-not-say-8" class="am-panel-collapse am-collapse">
+		            <div class="am-panel-bd loading-panel">
+		            	{{if .s_course_log}}
+							{{range $key, $val := .s_course_log}}
+								【{{date $val.ControlTime "Y-m-d H:i:s"}}】 添加了一个新的学生课表：{{$val.Content}} <br>
+							{{end}}
+		            	{{else}}
+							暂无数据
+						{{end}}
+		            </div>
+		        </div>
+	        </li>
+
+
+	       	<li class="am-panel-group" id="accordion">
+	           <div class="am-panel am-panel-default">
+		            <div class="am-panel-hd">
+		           		<span class="am-badge am-badge-danger am-radius">{{if .s_course_grade_log}} {{.s_course_grade_log | len}} {{end}}</span>
+	            		<strong  class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-9'}">学生成绩</strong>
+	            	</div>
+		        </div>
+				<div id="do-not-say-9" class="am-panel-collapse am-collapse">
+		            <div class="am-panel-bd loading-panel">
+		            	{{if .s_course_grade_log}}
+							{{range $key, $val := .s_course_grade_log}}
+								【{{date $val.ControlTime "Y-m-d H:i:s"}}】 添加了一个新的学生成绩：{{$val.Content}} <br>
+							{{end}}
+		            	{{else}}
+							暂无数据
+						{{end}}
+		            </div>
+		        </div>
+	        </li>
+
+
+	        <li class="am-panel-group" id="accordion">
+	           <div class="am-panel am-panel-default">
+		            <div class="am-panel-hd">
+		           		<span class="am-badge am-badge-danger am-radius">{{if .failed_log}} {{.failed_log | len}} {{end}}</span>
+	            		<strong  class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-10'}">失败记录</strong>
+	            	</div>
+		        </div>
+				<div id="do-not-say-10" class="am-panel-collapse am-collapse">
+		            <div class="am-panel-bd loading-panel">
+		            	{{if .failed_log}}
+							{{range $key, $val := .failed_log}}
+								【{{date $val.ControlTime "Y-m-d H:i:s"}}】：{{$val.Content}} <br>
+							{{end}}
+		            	{{else}}
+							暂无数据
+						{{end}}
+		            </div>
+		        </div>
+	        </li>
+
+
+	        <li>
+	        	<a href="/view/student/eduLoading">
+	           		<button type="button" id="allRefresh" class="am-btn am-btn-success am-btn-sm am-btn-block"><i class="am-icon-refresh"></i> 重新加载</button>
+				</a>
+	        </li>
+	    </ul>
+	</div>
+{{else}}
+	<div class="am-container">
+	    <br>
+	    <ul class="am-list am-list-static am-list-border refresh-list">
+	        <li>
+	            <strong>用户尚未导入教务系统数据，点击下方按钮导入教务系统数据</strong></li>
+	        <li>
+	        	<a href="/view/student/eduLoading">
+	            	<button type="button" id="allRefresh" class="am-btn am-btn-success am-btn-sm am-btn-block"><i class="am-icon-refresh"></i> 重新加载</button>
+	            </a>
+	        </li>
+	    </ul>
+	</div>
 {{end}}

@@ -2,8 +2,13 @@ $( function () {
 
 	// 点名按钮事件
 	$( '#check' ).click( function () {
+		if (data.length < 0) {
+			alert("该课程没有学生");
+			return false;
+		}
 
 		var num = $( 'input[ name=num ]' );
+		var week = $('input[name=week]').val();
 		var maxnum = $( '.maxnum' ).text();
 		var reg = /^[1-9]+[0-9]*]*$/;
 
@@ -12,7 +17,7 @@ $( function () {
 			// 点名列表生成
 			$( '.checkarea' ).remove();
 			var obj = '<table class="am-table am-table-bordered am-table-radius am-table-striped info">'+
-				'<thead><tr><th>姓名</th><th>学号</th><th>班级</th><th></th></tr></thead>'+
+				'<thead><tr><th>姓名</th><th>学号</th><th>班级</th><th>签到</th></tr></thead>'+
 				'<tbody>';
 			var res = createRandomNumber( maxnum , num.val() );
 
@@ -26,10 +31,10 @@ $( function () {
 					'<td>' + data[i].class + '</td>' +
 					'<td style="padding:5px;" width="30%">' +
 					'<div class="am-btn-group am-btn-group-justify" data-am-button>' +
-					'<label class="am-btn am-btn-success am-btn-sm am-active"><input type="radio" name="type[' + i + ']" value="0" checked>已到</label>' +
-					'<label class="am-btn am-btn-warning am-btn-sm"><input type="radio" name="type[' + i + ']" value="1">迟到</label>' +
-					'<label class="am-btn am-btn-danger am-btn-sm"><input type="radio" name="type[' + i + ']" value="2">未到</label>' +
-					'<label class="am-btn am-btn-secondary am-btn-sm"><input type="radio" name="type[' + i + ']" value="3">请假</label>' +
+					'<label class="am-btn am-btn-success am-btn-sm" onclick="studentCheck('+data[i].id+', \'已到\', '+week+')"><input type="radio" name="type[' + i + ']" value="0">已到</label>' +
+					'<label class="am-btn am-btn-warning am-btn-sm" onclick="studentCheck('+data[i].id+', \'迟到\', '+week+')"><input type="radio" name="type[' + i + ']" value="1">迟到</label>' +
+					'<label class="am-btn am-btn-danger am-btn-sm" onclick="studentCheck('+data[i].id+', \'未到\', '+week+')"><input type="radio" name="type[' + i + ']" value="2">未到</label>' +
+					'<label class="am-btn am-btn-secondary am-btn-sm" onclick="studentCheck('+data[i].id+', \'请假\', '+week+')"><input type="radio" name="type[' + i + ']" value="3">请假</label>' +
 					'</div>' +
 					'</td>' +
 					'</tr>';
@@ -40,13 +45,12 @@ $( function () {
 					'<td><input type="hidden" name="id[' + i + ']" value="' + data[i].id + '" /></td></td>' +
 					'<td></td>' +
 					'<td>' +
-					'<input type="radio" style="display:none;" name="type[' + i + ']" checked value="0">' +
+					'<input type="radio" style="display:none;" name="type[' + i + ']" value="0">' +
 					'</td>' +
 					'</tr>';
 				}
 			}
-
-			obj += '</tbody></table><button type="submit" class="am-btn am-btn-primary am-btn-lg am-radius">确定提交</button>';
+			obj += '</tbody></table><a href="'+ document.referrer +'" class="am-btn am-btn-primary am-btn-lg am-radius">确定提交</a>';
 			$('.content').append(obj);
 
 
