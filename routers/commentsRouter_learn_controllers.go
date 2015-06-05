@@ -6,6 +6,125 @@ import (
 
 func init() {
 	
+	beego.GlobalControllerRouter["learn/controllers:APIAdminController"] = append(beego.GlobalControllerRouter["learn/controllers:APIAdminController"],
+		beego.ControllerComments{
+			"UpdatePassword",
+			`/updatePassword`,
+			[]string{"post"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:APIStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:APIStudentController"],
+		beego.ControllerComments{
+			"UpdatePassword",
+			`/updatePassword`,
+			[]string{"post"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:APIStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:APIStudentController"],
+		beego.ControllerComments{
+			"UpdateImg",
+			`/updateImg`,
+			[]string{"post"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:APIStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:APIStudentController"],
+		beego.ControllerComments{
+			"UploadAttachment",
+			`/uploadAttachment`,
+			[]string{"post"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:APIStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:APIStudentController"],
+		beego.ControllerComments{
+			"ReadNoticeByStudent",
+			`/readNoticeByStudent`,
+			[]string{"post"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:APIStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:APIStudentController"],
+		beego.ControllerComments{
+			"DeleteStudentNotice",
+			`/deleteStudentNotice`,
+			[]string{"post"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:APIStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:APIStudentController"],
+		beego.ControllerComments{
+			"UploadImg",
+			`/uploadImg`,
+			[]string{"post"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:APIStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:APIStudentController"],
+		beego.ControllerComments{
+			"StudentCourse",
+			`/studentCourse`,
+			[]string{"post"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:APIStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:APIStudentController"],
+		beego.ControllerComments{
+			"StudentHomework",
+			`/studentHomework`,
+			[]string{"post"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:APIStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:APIStudentController"],
+		beego.ControllerComments{
+			"StudentCheck",
+			`/studentCheck`,
+			[]string{"post"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:APIStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:APIStudentController"],
+		beego.ControllerComments{
+			"CourseHistory",
+			`/courseHistory`,
+			[]string{"post"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:APIStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:APIStudentController"],
+		beego.ControllerComments{
+			"StudentScore",
+			`/studentScore`,
+			[]string{"post"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:APIStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:APIStudentController"],
+		beego.ControllerComments{
+			"CourseHomework",
+			`/courseHomework`,
+			[]string{"post"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:APIStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:APIStudentController"],
+		beego.ControllerComments{
+			"GetTermNumberByStudent",
+			`/getTermNumberByStudent`,
+			[]string{"post"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:APIStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:APIStudentController"],
+		beego.ControllerComments{
+			"GetStudentCourseByTerm",
+			`/getStudentCourseByTerm`,
+			[]string{"post"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:APIStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:APIStudentController"],
+		beego.ControllerComments{
+			"Login",
+			`/login`,
+			[]string{"post"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:APIStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:APIStudentController"],
+		beego.ControllerComments{
+			"EduLoading",
+			`/eduLoading`,
+			[]string{"get"},
+			nil})
+
 	beego.GlobalControllerRouter["learn/controllers:APITeacherController"] = append(beego.GlobalControllerRouter["learn/controllers:APITeacherController"],
 		beego.ControllerComments{
 			"UpdatePassword",
@@ -402,125 +521,6 @@ func init() {
 		beego.ControllerComments{
 			"Download",
 			`/download`,
-			[]string{"get"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:APIAdminController"] = append(beego.GlobalControllerRouter["learn/controllers:APIAdminController"],
-		beego.ControllerComments{
-			"UpdatePassword",
-			`/updatePassword`,
-			[]string{"post"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:APIStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:APIStudentController"],
-		beego.ControllerComments{
-			"UpdatePassword",
-			`/updatePassword`,
-			[]string{"post"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:APIStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:APIStudentController"],
-		beego.ControllerComments{
-			"UpdateImg",
-			`/updateImg`,
-			[]string{"post"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:APIStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:APIStudentController"],
-		beego.ControllerComments{
-			"UploadAttachment",
-			`/uploadAttachment`,
-			[]string{"post"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:APIStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:APIStudentController"],
-		beego.ControllerComments{
-			"ReadNoticeByStudent",
-			`/readNoticeByStudent`,
-			[]string{"post"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:APIStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:APIStudentController"],
-		beego.ControllerComments{
-			"DeleteStudentNotice",
-			`/deleteStudentNotice`,
-			[]string{"post"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:APIStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:APIStudentController"],
-		beego.ControllerComments{
-			"UploadImg",
-			`/uploadImg`,
-			[]string{"post"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:APIStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:APIStudentController"],
-		beego.ControllerComments{
-			"StudentCourse",
-			`/studentCourse`,
-			[]string{"post"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:APIStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:APIStudentController"],
-		beego.ControllerComments{
-			"StudentHomework",
-			`/studentHomework`,
-			[]string{"post"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:APIStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:APIStudentController"],
-		beego.ControllerComments{
-			"StudentCheck",
-			`/studentCheck`,
-			[]string{"post"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:APIStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:APIStudentController"],
-		beego.ControllerComments{
-			"CourseHistory",
-			`/courseHistory`,
-			[]string{"post"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:APIStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:APIStudentController"],
-		beego.ControllerComments{
-			"StudentScore",
-			`/studentScore`,
-			[]string{"post"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:APIStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:APIStudentController"],
-		beego.ControllerComments{
-			"CourseHomework",
-			`/courseHomework`,
-			[]string{"post"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:APIStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:APIStudentController"],
-		beego.ControllerComments{
-			"GetTermNumberByStudent",
-			`/getTermNumberByStudent`,
-			[]string{"post"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:APIStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:APIStudentController"],
-		beego.ControllerComments{
-			"GetStudentCourseByTerm",
-			`/getStudentCourseByTerm`,
-			[]string{"post"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:APIStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:APIStudentController"],
-		beego.ControllerComments{
-			"Login",
-			`/login`,
-			[]string{"post"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:APIStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:APIStudentController"],
-		beego.ControllerComments{
-			"EduLoading",
-			`/eduLoading`,
 			[]string{"get"},
 			nil})
 

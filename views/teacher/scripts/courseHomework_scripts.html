@@ -6,9 +6,13 @@
         //设置时间轴
         timeline : {
             //时间轴时间列表
-            data:[
-                {{range $key, $val := .t_course.Homeworks}}
-                    {{$val.PublishWeek}},
+            data:[  
+                {{if .t_course.Homeworks}}         
+                    {{range $key, $val := .t_course.Homeworks}}
+                        {{$val.PublishWeek}},
+                    {{end}}
+                {{else}}
+                    0
                 {{end}}
             ],
             //时间轴的位置设定
@@ -21,45 +25,56 @@
         },
         //设置数据点
         options : [
-            {{range $key, $val := .t_course.Homeworks}}
-                {
-                    title:{
-                        text:'第{{$val.PublishWeek}}周作业记录'
-                    },
-                    //设置提示
-                    tooltip: {
-                        show: true
-                    },
-                    //设置坐标轴
-                    xAxis : [
-                        {
-                            type : 'category',
-                            data : ["A","B","C","D","E"],
-                            axisLabel:{
-                                margin:-20,
-                                textStyle:{
-                                    color:'#333333',
-                                    fontWeight:'bold'
+            {{if .t_course.Homeworks}}
+                {{range $key, $val := .t_course.Homeworks}}
+                    {
+                        title:{
+                            text:'第{{$val.PublishWeek}}周作业记录'
+                        },
+                        //设置提示
+                        tooltip: {
+                            show: true
+                        },
+                        //设置坐标轴
+                        xAxis : [
+                            {
+                                type : 'category',
+                                data : ["A","B","C","D","E"],
+                                axisLabel:{
+                                    margin:-20,
+                                    textStyle:{
+                                        color:'#333333',
+                                        fontWeight:'bold'
+                                    }
                                 }
                             }
-                        }
-                    ],
-                    yAxis : [
-                        {
-                            type : 'value'
-                        }
-                    ],
+                        ],
+                        yAxis : [
+                            {
+                                type : 'value'
+                            }
+                        ],
+                        series : [
+                            {
+                                type:'bar',
+                                data:[
+                                    {{range $key, $val := $val.StudentHomeworks | getHomeworkGrade}}
+                                        parseInt({{$val}}),
+                                    {{end}}
+                                ]
+                            }
+                        ]
+                    },
+                {{end}}
+            {{else}}
+                {
                     series : [
                         {
                             type:'bar',
-                            data:[
-                                {{range $key, $val := $val.StudentHomeworks | getHomeworkGrade}}
-                                    parseInt({{$val}}),
-                                {{end}}
-                            ]
+                            data:[]
                         }
                     ]
-                },
+                }
             {{end}}
         ]
     };

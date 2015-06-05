@@ -1,7 +1,7 @@
 $( function () {
     upload($(".upload-btn"));
     updateUpload($(".update-upload-btn"));
-    
+
     echarts.init( document.getElementById( 'line') ).setOption( optionLine );
     $( window).resize( function() {
         echarts.init( document.getElementById( 'line' ) ).setOption( optionLine );
