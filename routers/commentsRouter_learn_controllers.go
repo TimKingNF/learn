@@ -6,6 +6,216 @@ import (
 
 func init() {
 	
+	beego.GlobalControllerRouter["learn/controllers:ViewStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewStudentController"],
+		beego.ControllerComments{
+			"Table",
+			`/table`,
+			[]string{"get"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:ViewStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewStudentController"],
+		beego.ControllerComments{
+			"Info",
+			`/info`,
+			[]string{"get"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:ViewStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewStudentController"],
+		beego.ControllerComments{
+			"Setting",
+			`/setting`,
+			[]string{"get"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:ViewStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewStudentController"],
+		beego.ControllerComments{
+			"UploadImg",
+			`/uploadImg`,
+			[]string{"get"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:ViewStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewStudentController"],
+		beego.ControllerComments{
+			"Notice",
+			`/notice`,
+			[]string{"get"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:ViewStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewStudentController"],
+		beego.ControllerComments{
+			"TeacherInfo",
+			`/teacherInfo`,
+			[]string{"get"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:ViewStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewStudentController"],
+		beego.ControllerComments{
+			"ClassInfo",
+			`/classInfo`,
+			[]string{"get"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:ViewStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewStudentController"],
+		beego.ControllerComments{
+			"CourseInfo",
+			`/courseInfo`,
+			[]string{"get"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:ViewStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewStudentController"],
+		beego.ControllerComments{
+			"CourseHistory",
+			`/courseHistory`,
+			[]string{"get"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:ViewStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewStudentController"],
+		beego.ControllerComments{
+			"CourseHomework",
+			`/courseHomework`,
+			[]string{"get"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:ViewStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewStudentController"],
+		beego.ControllerComments{
+			"StudentCheck",
+			`/studentCheck`,
+			[]string{"get"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:ViewStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewStudentController"],
+		beego.ControllerComments{
+			"StudentHomework",
+			`/studentHomework`,
+			[]string{"get"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:ViewStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewStudentController"],
+		beego.ControllerComments{
+			"Download",
+			`/download`,
+			[]string{"get"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:ViewStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewStudentController"],
+		beego.ControllerComments{
+			"StudentScore",
+			`/studentScore`,
+			[]string{"get"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:ViewStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewStudentController"],
+		beego.ControllerComments{
+			"Echart",
+			`/echart`,
+			[]string{"get"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:ViewStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewStudentController"],
+		beego.ControllerComments{
+			"Login",
+			`/login`,
+			[]string{"get"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:ViewStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewStudentController"],
+		beego.ControllerComments{
+			"EduLoading",
+			`/eduLoading`,
+			[]string{"get"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:ViewStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewStudentController"],
+		beego.ControllerComments{
+			"EduManage",
+			`/eduManage`,
+			[]string{"get"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"],
+		beego.ControllerComments{
+			"Info",
+			`/info`,
+			[]string{"get"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"],
+		beego.ControllerComments{
+			"ClassInfo",
+			`/classInfo`,
+			[]string{"get"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"],
+		beego.ControllerComments{
+			"CourseHistory",
+			`/courseHistory`,
+			[]string{"get"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"],
+		beego.ControllerComments{
+			"Check",
+			`/check`,
+			[]string{"get"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"],
+		beego.ControllerComments{
+			"Profile",
+			`/profile`,
+			[]string{"get"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"],
+		beego.ControllerComments{
+			"Setting",
+			`/setting`,
+			[]string{"get"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"],
+		beego.ControllerComments{
+			"CourseInfo",
+			`/courseInfo`,
+			[]string{"get"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"],
+		beego.ControllerComments{
+			"CourseHomework",
+			`/courseHomework`,
+			[]string{"get"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"],
+		beego.ControllerComments{
+			"Notice",
+			`/notice`,
+			[]string{"get"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"],
+		beego.ControllerComments{
+			"UploadImg",
+			`/uploadImg`,
+			[]string{"get"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"],
+		beego.ControllerComments{
+			"Table",
+			`/table`,
+			[]string{"get"},
+			nil})
+
+	beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"],
+		beego.ControllerComments{
+			"Download",
+			`/download`,
+			[]string{"get"},
+			nil})
+
 	beego.GlobalControllerRouter["learn/controllers:APIAdminController"] = append(beego.GlobalControllerRouter["learn/controllers:APIAdminController"],
 		beego.ControllerComments{
 			"UpdatePassword",
@@ -311,216 +521,6 @@ func init() {
 		beego.ControllerComments{
 			"SignOut",
 			`/signOut`,
-			[]string{"get"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:ViewStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewStudentController"],
-		beego.ControllerComments{
-			"Table",
-			`/table`,
-			[]string{"get"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:ViewStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewStudentController"],
-		beego.ControllerComments{
-			"Info",
-			`/info`,
-			[]string{"get"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:ViewStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewStudentController"],
-		beego.ControllerComments{
-			"Setting",
-			`/setting`,
-			[]string{"get"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:ViewStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewStudentController"],
-		beego.ControllerComments{
-			"UploadImg",
-			`/uploadImg`,
-			[]string{"get"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:ViewStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewStudentController"],
-		beego.ControllerComments{
-			"Notice",
-			`/notice`,
-			[]string{"get"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:ViewStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewStudentController"],
-		beego.ControllerComments{
-			"TeacherInfo",
-			`/teacherInfo`,
-			[]string{"get"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:ViewStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewStudentController"],
-		beego.ControllerComments{
-			"ClassInfo",
-			`/classInfo`,
-			[]string{"get"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:ViewStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewStudentController"],
-		beego.ControllerComments{
-			"CourseInfo",
-			`/courseInfo`,
-			[]string{"get"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:ViewStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewStudentController"],
-		beego.ControllerComments{
-			"CourseHistory",
-			`/courseHistory`,
-			[]string{"get"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:ViewStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewStudentController"],
-		beego.ControllerComments{
-			"CourseHomework",
-			`/courseHomework`,
-			[]string{"get"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:ViewStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewStudentController"],
-		beego.ControllerComments{
-			"StudentCheck",
-			`/studentCheck`,
-			[]string{"get"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:ViewStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewStudentController"],
-		beego.ControllerComments{
-			"StudentHomework",
-			`/studentHomework`,
-			[]string{"get"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:ViewStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewStudentController"],
-		beego.ControllerComments{
-			"Download",
-			`/download`,
-			[]string{"get"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:ViewStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewStudentController"],
-		beego.ControllerComments{
-			"StudentScore",
-			`/studentScore`,
-			[]string{"get"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:ViewStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewStudentController"],
-		beego.ControllerComments{
-			"Echart",
-			`/echart`,
-			[]string{"get"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:ViewStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewStudentController"],
-		beego.ControllerComments{
-			"Login",
-			`/login`,
-			[]string{"get"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:ViewStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewStudentController"],
-		beego.ControllerComments{
-			"EduLoading",
-			`/eduLoading`,
-			[]string{"get"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:ViewStudentController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewStudentController"],
-		beego.ControllerComments{
-			"EduManage",
-			`/eduManage`,
-			[]string{"get"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"],
-		beego.ControllerComments{
-			"Info",
-			`/info`,
-			[]string{"get"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"],
-		beego.ControllerComments{
-			"ClassInfo",
-			`/classInfo`,
-			[]string{"get"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"],
-		beego.ControllerComments{
-			"CourseHistory",
-			`/courseHistory`,
-			[]string{"get"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"],
-		beego.ControllerComments{
-			"Check",
-			`/check`,
-			[]string{"get"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"],
-		beego.ControllerComments{
-			"Profile",
-			`/profile`,
-			[]string{"get"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"],
-		beego.ControllerComments{
-			"Setting",
-			`/setting`,
-			[]string{"get"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"],
-		beego.ControllerComments{
-			"CourseInfo",
-			`/courseInfo`,
-			[]string{"get"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"],
-		beego.ControllerComments{
-			"CourseHomework",
-			`/courseHomework`,
-			[]string{"get"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"],
-		beego.ControllerComments{
-			"Notice",
-			`/notice`,
-			[]string{"get"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"],
-		beego.ControllerComments{
-			"UploadImg",
-			`/uploadImg`,
-			[]string{"get"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"],
-		beego.ControllerComments{
-			"Table",
-			`/table`,
-			[]string{"get"},
-			nil})
-
-	beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"] = append(beego.GlobalControllerRouter["learn/controllers:ViewTeatherController"],
-		beego.ControllerComments{
-			"Download",
-			`/download`,
 			[]string{"get"},
 			nil})
 

@@ -148,6 +148,12 @@ func (this *ViewTeatherController) Check() {
 // @Title 修改个人资料视图
 // @router /profile [get]
 func (this *ViewTeatherController) Profile() {
+	if exist := models.TeacherProfileExist(this.Data["teacher"].(*models.Teacher).Id); !exist {
+		if err := models.AddTeacherProfile(&models.TeacherProfile{Teacher: this.Data["teacher"].(*models.Teacher)}); err != nil {
+			this.Redirect("/error", 302)
+			this.StopRun()
+		}
+	}
 	//	get teacher profile
 	if t_profile, err := models.GetTeacherProfile(this.Data["teacher"].(*models.Teacher).Id); err == nil {
 		this.Data["teacher"].(*models.Teacher).Profile = t_profile
