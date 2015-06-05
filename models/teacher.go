@@ -6,12 +6,14 @@ import (
 )
 
 type Teacher struct {
-	Id         int64       `orm:"auto"`
-	Name       string      `orm:"null;size(50)" valid:"MaxSize(50)"`
-	Sex        int         `orm:"default(0)" valid:"Range(0,1,2)"`
-	Password   string      `orm:"null;size(20)" valid:"MaxSize(20)"`
-	Headimgurl string      `orm:"default(/static/img/avatar.jpeg)"`
-	Department *Department `orm:"rel(fk);null;on_delete(set_null)"`
+	Id            int64            `orm:"auto"`
+	Name          string           `orm:"null;size(50)" valid:"MaxSize(50)"`
+	Sex           int              `orm:"default(0)" valid:"Range(0,1,2)"`
+	Password      string           `orm:"null;size(20)" valid:"MaxSize(20)"`
+	Headimgurl    string           `orm:"default(/static/img/avatar.jpeg)"`
+	Department    *Department      `orm:"rel(fk);null;on_delete(set_null)"`
+	Profile       *TeacherProfile  `orm:"reverse(one)"`
+	TeacherCourse []*TeacherCourse `orm:"reverse(many)"`
 }
 
 func checkTeacher(u *Teacher) (err error) {
@@ -49,6 +51,17 @@ func AddTeacher(userPtr *Teacher) error {
 	_, err := orm.NewOrm().Insert(userPtr)
 	if err != nil {
 		return ErrorInfo("AddTeacher", err)
+	}
+	return nil
+}
+
+func UpdateTeacher(ptr *Teacher) error {
+	if err := checkTeacher(ptr); err != nil {
+		return ErrorInfo("UpdateTeacher", err)
+	}
+	_, err := orm.NewOrm().Update(ptr)
+	if err != nil {
+		return ErrorInfo("UpdateTeacher", err)
 	}
 	return nil
 }

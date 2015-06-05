@@ -1,0 +1,90 @@
+{{template "scripts/signature_scripts.html" .}}
+<script type="text/javascript" src="/static/js/student/echarts-all.js"></script>
+<script type="text/javascript">
+	 var optionLine = {
+        tooltip : {
+            trigger: 'axis'
+        },
+        xAxis : [
+            {
+                type : 'category',
+                data : ['未到','迟到','已到','请假']
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value'
+            }
+        ],
+        series : [
+            {
+                name:'次数',
+                type:'bar',
+                data:[
+                    {{range $key, $val := index .t_course.Orgs "s_checks" | getStudentCheckInChinese}}
+                        parseInt({{$val}}),
+                    {{end}}
+                ]
+            }
+        ]
+    };
+</script>
+<script type="text/javascript">
+	$( function () {
+        $(".select-form").find("select[name='xnd']").change(function() {
+        $.post("/api/student/getTermNumberByStudent", {
+            "key": key,
+            "signature": GetSignature(getCookie("token"), appid, sessid),
+            "xnd": $(this).children('option:selected').val(),
+        }, function(data){
+            if (data.Status != 0) {
+                alert(data.Data);
+                return
+            } else {
+                var objs = data.Data, html = '<option value="0">-未选择-</option>';
+                if (objs) {
+                    for (var i = 0; i < objs.length; i++) {
+                        html += '<option value="'+objs[i].Number+'">'+objs[i].Number+'</option>';
+                    }
+                    $(".select-form").find("select[name='xqd']").html(html);
+                    $(".select-form").find("select[name='course']").html('<option value="0">-未选择-</option>');
+                } else {
+                    alert("操作失败");
+                    return
+                }
+            }
+        }, "json");
+    });
+
+    $(".select-form").find("select[name='xqd']").change(function() {
+        $.post("/api/student/getStudentCourseByTerm", {
+            "key": key,
+            "signature": GetSignature(getCookie("token"), appid, sessid),
+            "xnd": $(".select-form").find("select[name='xnd']").children('option:selected').val(),
+            "xqd": $(this).children('option:selected').val(),
+        }, function(data){
+            if (data.Status != 0) {
+                alert(data.Data);
+                return
+            } else {
+                var objs = data.Data, html = "";
+                if (objs) {
+                    for (var i = 0; i < objs.length; i++) {
+                        var time = JSON.parse(objs[i].TeacherCourse.Time);
+                        html += '<option value="'+objs[i].Id+'">'+objs[i].TeacherCourse.Course.Name+' (周'+switchWeekDay(time.week_day)+' 第'+time.week_time+'节)</option>';
+                    }
+                    $(".select-form").find("select[name='course']").html(html);
+                } else {
+                    alert("操作失败");
+                    return
+                }
+            }
+        }, "json");
+    });
+        
+	    echarts.init( document.getElementById( 'line') ).setOption( optionLine );
+	    $( window).resize( function() {
+	        echarts.init( document.getElementById( 'line' ) ).setOption( optionLine );
+	    });
+	});
+</script>

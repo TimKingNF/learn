@@ -1,0 +1,164 @@
+{{template "scripts/signature_scripts.html" .}}
+<script type="text/javascript" src="/static/js/student/echarts-all.js"></script>
+<script type="text/javascript">
+	var optionLine = {
+        tooltip : {
+            trigger: 'axis'
+        },
+        xAxis : [
+            {
+                type : 'category',
+                data : ['A','B','C','D','E']
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value'
+            }
+        ],
+        series : [
+            {
+                name:'次数',
+                type:'bar',
+                data: [
+                	{{range $key, $val := .term_list | getCheckByTerm | getCheckByStudentCourses | getStudentCheckInChinese}}
+                		parseInt({{$val}}),
+                	{{end}}
+                ]
+            }
+        ]
+    };
+    var optionTermLine = {
+        tooltip : {
+            trigger: 'axis'
+        },
+        xAxis : [
+            {
+                type : 'category',
+                data : ['A','B','C','D','E']
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value'
+            }
+        ],
+        series : [
+            {
+                name:'次数',
+                type:'bar',
+                data: [
+                	{{range $key, $val := .s_courses | getCheckByStudentCourses | getStudentCheckInChinese}}
+                		parseInt({{$val}}),
+                	{{end}}
+                ]
+            }
+        ]
+    };
+	var optionCourseLine = {
+        tooltip : {
+            trigger: 'axis'
+        },
+        xAxis : [
+            {
+                type : 'category',
+                data : ['A','B','C','D','E']
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value'
+            }
+        ],
+        series : [
+            {
+                name:'次数',
+                type:'bar',
+                data: [
+                	{{if $.s_course}}
+                		{{range $key, $val := .s_courses}}
+	                        {{if eq $val.Id $.s_course.Id}}
+	                        	{{range $key1, $val1 := index $val.Orgs "s_checks" | getStudentCheckInChinese}}
+	                        		parseInt({{$val1}}),
+	                        	{{end}}
+	                        {{end}}
+	                    {{end}}
+                	{{else}}
+	                	{{range $key, $val := .s_courses}}
+	                        {{if eq $key 0}}
+	                        	{{range $key1, $val1 := index $val.Orgs "s_checks" | getStudentCheckInChinese}}
+	                        		parseInt({{$val1}}),
+	                        	{{end}}
+	                        {{end}}
+	                    {{end}}
+	                {{end}}
+                ]
+            }
+        ]
+    };
+</script>
+<script type="text/javascript">
+	$(function() {
+		console.log({{.term_list}})
+	    echarts.init( document.getElementById( 'line') ).setOption( optionLine );
+	    echarts.init( document.getElementById( 'course-line') ).setOption( optionCourseLine );
+	    echarts.init( document.getElementById( 'term-line') ).setOption( optionTermLine );
+	    $( window).resize( function() {
+	        echarts.init( document.getElementById( 'course-line') ).setOption( optionCourseLine );
+	        echarts.init( document.getElementById( 'term-line') ).setOption( optionTermLine );
+	    	echarts.init( document.getElementById( 'line') ).setOption( optionLine );
+
+	    });
+
+	    $(".select-form").find("select[name='xnd']").change(function() {
+            $.post("/api/student/getTermNumberByStudent", {
+                "key": key,
+                "signature": GetSignature(getCookie("token"), appid, sessid),
+                "xnd": $(this).children('option:selected').val(),
+            }, function(data){
+                if (data.Status != 0) {
+                    alert(data.Data);
+                    return
+                } else {
+                    var objs = data.Data, html = '<option value="0">-未选择-</option>';
+                    if (objs) {
+                        for (var i = 0; i < objs.length; i++) {
+                            html += '<option value="'+objs[i].Number+'">'+objs[i].Number+'</option>';
+                        }
+                        $(".select-form").find("select[name='xqd']").html(html);
+                        $(".select-form").find("select[name='course']").html('<option value="0">-未选择-</option>');
+                    } else {
+                        alert("操作失败");
+                        return
+                    }
+                }
+            }, "json");
+        });
+
+        $(".select-form").find("select[name='xqd']").change(function() {
+            $.post("/api/student/getStudentCourseByTerm", {
+                "key": key,
+                "signature": GetSignature(getCookie("token"), appid, sessid),
+                "xnd": $(".select-form").find("select[name='xnd']").children('option:selected').val(),
+                "xqd": $(this).children('option:selected').val(),
+            }, function(data){
+                if (data.Status != 0) {
+                    alert(data.Data);
+                    return
+                } else {
+                    var objs = data.Data, html = "";
+                    if (objs) {
+                        for (var i = 0; i < objs.length; i++) {
+                            var time = JSON.parse(objs[i].TeacherCourse.Time);
+                            html += '<option value="'+objs[i].Id+'">'+objs[i].TeacherCourse.Course.Name+' (周'+switchWeekDay(time.week_day)+' 第'+time.week_time+'节)</option>';
+                        }
+                        $(".select-form").find("select[name='course']").html(html);
+                    } else {
+                        alert("操作失败");
+                        return
+                    }
+                }
+            }, "json");
+        });
+	})
+</script>

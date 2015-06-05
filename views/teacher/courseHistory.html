@@ -1,0 +1,93 @@
+<div class="am-container">
+	<br>
+    <div class="am-u-sm-12 am-u-md-12 am-u-lg-10">
+        <form action="/api/teacher/courseHistory" method="post" class="am-form select-form">
+            <div class="am-form-group am-form-group-sm am-u-sm-2 pad-l-r">
+                <select name="xnd" class="am-form-field">
+                    {{range $key, $val := (.term_list | GetTermsYear | FilterRepeat)}}
+                        <option value="{{$val}}" {{if eq $val ($.t_course.Term | GetTermYear)}}selected="selected"{{end}}>{{$val}}</option>
+                    {{end}}
+                </select>
+            </div>
+            <div class="am-form-group am-form-group-sm am-u-sm-2 pad-l-r">
+                 <select name="xqd" class="am-form-field">
+                    {{range $key, $val := (.term_list | GetTermsNumber | FilterRepeat)}}
+                        <option value="{{$val}}" {{if eq $val ($.t_course.Term| GetTermNumber)}}selected="selected"{{end}}>{{$val}}</option>
+                    {{end}}
+                </select>
+            </div>
+            <div class="am-form-group am-form-group-sm am-u-sm-5 pad-l-r">
+                <select name="course" class="am-form-field">
+                    {{range $key, $val := .t_courses}}
+                        <option value="{{$val.Id}}" {{if eq $.t_course.Id $val.Id}}selected="selected"{{end}}>
+                            {{$val.Course.Name}} (周{{(index ($val.Time | Map2Json) "week_day") | GetWeekDayInChinese}} 第{{index ($val.Time | Map2Json) "week_time"}}节)
+                        </option>
+                    {{end}}
+                </select>
+            </div>
+            <div class="am-form-group am-form-group-sm am-u-sm-1 pad-l-r">
+                <select name="week" class="am-form-field">
+                    {{range $key, $val := .course_week}}
+                        <option value="{{$val}}" {{if eq (printf "%d" $.now_week) $val}}selected="selected"{{end}}>{{$val}}</option>
+                    {{end}}
+                </select>
+            </div>
+            <div class="am-form-group am-u-sm-2 pad-l-r">
+                <input type="hidden" name='key' value="{{.key}}">
+                <input type="hidden" name='signature' class='signature'>
+                <input type="hidden" name="week" value="{{.now_week}}">
+                <button type="submit" class="am-btn am-btn-primary am-btn-sm">查看</button>
+            </div>
+        </form>
+    </div>
+    <div class="am-u-sm-12">
+        <br>
+        <fieldset>
+            <legend>课程信息</legend>
+            <ul class="am-avg-md-3 am-avg-sm-2 am-thumbnails">
+                <li>课程代码：{{.t_course.Course.Id}}</li>
+                <li>课程名称：{{.t_course.Course.Name}}</li>
+                <li>授课教师：{{.t_course.Teacher.Name}}</li>
+                <li>班级数量：{{if (index .t_course.Orgs "class_num")}} {{index .t_course.Orgs "class_num"}} {{else}} 未知 {{end}}</li>
+                <li>学生数量：{{if (index .t_course.Orgs "student_num")}} {{index .t_course.Orgs "student_num"}}人 {{else}} 未知 {{end}}</li>
+                <li>上课地点：{{.t_course.Place}}</li>
+                <li>上课时间：周{{(index (.t_course.Time | Map2Json) "week_day") | GetWeekDayInChinese}} 第{{index (.t_course.Time | Map2Json) "week_time"}}节</li>
+                <li>上课周期：{{.t_course.StartWeek}} - {{.t_course.EndWeek}}周</li>
+                <li>特殊描述：{{if .t_course.Remark}} {{.t_course.Remark}} {{else}} 暂无 {{end}}</li>
+            </ul>
+        </fieldset>
+        <fieldset>
+            <legend>考勤信息</legend>
+            <a href="/view/teacher/check?course={{.t_course.Id}}{{if .now_week}}&week={{.now_week}}{{end}}" class="am-btn am-btn-primary am-btn-sm">点名</a>
+            <div id="line" class="h-300"></div>
+        </fieldset>
+        <fieldset>
+            <legend>当周签到</legend>
+            <table class="am-table am-table-bordered am-table-radius am-table-striped info">
+                <thead><tr><th>姓名</th><th>学号</th><th>班级</th><th>签到</th></tr></thead>
+                <tbody>
+                    {{if .t_course.StudentChecks}}
+                        {{range $key, $val := .t_course.StudentChecks}}
+                            <tr>
+                                <td>{{$val.Student.Name}}</td>
+                                <td>{{$val.Student.Id}}</td>
+                                <td>{{$val.Student.Class.Name}}</td>
+                                <td style="padding:5px;" width="30%">
+                                    <div class="am-btn-group am-btn-group-justify" data-am-button>
+                                        {{if eq $val.Result "已到"}}<label class='am-btn am-btn-success am-btn-sm'><input type="radio">已到</label>{{end}}
+                                        {{if eq $val.Result "迟到"}}<label class='am-btn am-btn-warning am-btn-sm'><input type="radio">迟到</label>{{end}}
+                                        {{if eq $val.Result "未到"}}<label class='am-btn am-btn-danger am-btn-sm'><input type="radio">未到</label>{{end}}
+                                        {{if eq $val.Result "请假"}}<label class='am-btn am-btn-secondary am-btn-sm'><input type="radio">请假</label>{{end}}
+                                    </div>
+                                </td>
+                            </tr>
+                        {{end}}
+                    {{else}}
+                        <tr><td colspan="4">暂无数据</td></tr>
+                    {{end}}
+                </tbody>
+            </table>
+        </fieldset>
+        <br>
+    </div>
+</div>

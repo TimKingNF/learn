@@ -22,6 +22,11 @@ func init() {
 				&controllers.APIAdminController{},
 			),
 		),
+		beego.NSNamespace("/teacher",
+			beego.NSInclude(
+				&controllers.APITeacherController{},
+			),
+		),
 	)
 
 	view := beego.NewNamespace("/view",

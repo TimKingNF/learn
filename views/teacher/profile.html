@@ -1,0 +1,76 @@
+<div class="am-g bg-primary ">
+	<div class="am-container">
+		<br>
+		<strong class="am-text-primary am-text-lg">个人资料</strong> / <small>User Profile</small>
+		<hr>
+		<br>
+		<form action="/api/teacher/updateProfile" method="post" class="am-form" data-am-validator>
+			<div class="am-u-sm-12 am-u-md-9 am-u-lg-6">
+				<div class="am-form-group">
+					<label for="oldpwd" class="am-form-label">性别</label>
+					<select name="sex">
+						<option value="0" {{if eq .teacher.Sex 0}} selected="selected" {{end}}>未知</option>
+						<option value="1" {{if eq .teacher.Sex 1}} selected="selected" {{end}}>男</option>
+						<option value="2" {{if eq .teacher.Sex 2}} selected="selected" {{end}}>女</option>
+					</select>
+				</div>
+				<div class="am-form-group">
+					<label for="phone" class="am-form-label">联系方式</label>
+					<input type="text" name='phone' id="phone" pattern="^(\d{3}-|\d{4}-)(\d{8}|\d{7})$|^1((3|5|8){1}\d{1}|70)\d{8}$" maxlength="20" placeholder="输入正确的电话号码或者手机号" value="{{.teacher.Profile.Phone}}">
+					<input type="hidden" name='key' value="{{.key}}">
+					<input type="hidden" name='signature' class='signature'>
+				</div>
+				<div class="am-form-group">
+					<label for="email" class="am-form-label">电子邮箱</label>
+					<input type="email" name='email' id="email" placeholder="请填写正确的电子邮箱" value="{{.teacher.Profile.Email}}">
+				</div>
+				<div class="am-form-group">
+					<label for="degree" class="am-form-label">学历\学位</label>
+					<select name="degree">
+						{{if not .teacher.Profile.Degree}}
+						<option value="未知" selected="selected">未知</option>
+						{{end}}
+						<option value="小学" {{if eq .teacher.Profile.Degree "小学"}} selected="selected" {{end}}>小学</option>
+						<option value="初中" {{if eq .teacher.Profile.Degree "初中"}} selected="selected" {{end}}>初中</option>
+						<option value="高中" {{if eq .teacher.Profile.Degree "高中"}} selected="selected" {{end}}>高中</option>
+						<option value="中专" {{if eq .teacher.Profile.Degree "中专"}} selected="selected" {{end}}>中专</option>
+						<option value="高职" {{if eq .teacher.Profile.Degree "高职"}} selected="selected" {{end}}>高职</option>
+						<option value="专科" {{if eq .teacher.Profile.Degree "专科"}} selected="selected" {{end}}>专科</option>
+						<option value="本科"  {{if eq .teacher.Profile.Degree "本科"}} selected="selected" {{end}}>本科</option>
+						<option value="硕士研究生" {{if eq .teacher.Profile.Degree "硕士研究生"}} selected="selected" {{end}}>硕士研究生</option>
+						<option value="硕士学位" {{if eq .teacher.Profile.Degree "硕士学位"}} selected="selected" {{end}}>硕士学位</option>
+						<option value="博士研究生" {{if eq .teacher.Profile.Degree "博士研究生"}} selected="selected" {{end}}>博士研究生</option>
+						<option value="博士学位" {{if eq .teacher.Profile.Degree "博士学位"}} selected="selected" {{end}}>博士学位</option>
+					</select>
+				</div>
+				<div class="am-form-group">
+					<label for="title" class="am-form-label">个人职称</label>
+					<select name="title">
+						{{if not .teacher.Profile.Title}}
+						<option value="未知" selected="selected">未知</option>
+						{{end}}
+						<option value="助教" {{if eq .teacher.Profile.Title "助教"}} selected="selected" {{end}}>助教</option>
+						<option value="讲师" {{if eq .teacher.Profile.Title "讲师"}} selected="selected" {{end}}>讲师</option>
+						<option value="副教授" {{if eq .teacher.Profile.Title "副教授"}} selected="selected" {{end}}>副教授</option>
+						<option value="教授" {{if eq .teacher.Profile.Title "教授"}} selected="selected" {{end}}>教授</option>
+					</select>
+				</div>
+				<div class="am-form-group">
+					<label for="subject" class="am-form-label">学科方向</label>
+					<input type="text" name='subject' id="subject" maxlength="40" placeholder="请填写您所从事、研究、教学的学科方向" value="{{.teacher.Profile.Subject}}">
+				</div>
+			</div>
+			<div class="am-u-sm-12 am-u-md-9 am-u-lg-6">
+				<div class="am-form-group">
+					<label for="doc-vld-ta-2-1" class="am-form-label">个人简历</label>
+					<textarea id="doc-vld-ta-2-1" maxlength="600" rows="25" name='remark'>{{.teacher.Profile.Remark}}</textarea>
+				</div>
+			</div>
+			<div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+				<div class="am-form-group">
+					<button class="am-btn am-btn-primary am-radius">确认</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

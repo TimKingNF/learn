@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>学风管理系统-教师端</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/amazeui.min.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/student/common.css">
+	{{.Head_html}}
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="Cache-Control" content="no-siteapp"/>
+	<meta name="mobile-web-app-capable" content="yes">
+	<!--[if lt IE 9]>
+	<script type="text/javascript">alert("sorry，low version of the browser does not support");</script>
+	<![endif]-->
+</head>
+<body>
+<!-- header start -->
+<div class="am-topbar am-topbar-inverse am-topbar-fixed-top">
+	<div class="am-container">
+		<h1 class="am-topbar-brand">
+			大学生创新训练项目
+		</h1>
+		<button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-primary am-show-sm-only" data-am-collapse="{target: '#nav'}"><span class="am-sr-only"></span> <span class="am-icon-bars"></span></button>
+
+		<div class="am-collapse am-topbar-collapse" id="nav">
+			<div class="am-topbar-right">
+				<a href="/view/teacher/notice" class="am-btn am-btn-primary am-topbar-btn am-btn-sm"><span class="am-icon-bell"></span> <span class="am-badge am-badge-danger am-radius">{{.noticeNum}}</span></a>
+				<button type="button" class="am-btn am-btn-primary am-topbar-btn am-btn-sm" data-am-offcanvas="{target: '#aside'}"><span class="am-icon-navicon"></span></button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<a href="javascript:;" data-am-smooth-scroll class="am-icon-btn am-icon-arrow-up am-active retop"></a>
+
+<!-- nav -->
+<div id="aside" class="am-offcanvas">
+	<div class="am-offcanvas-bar aside">
+		<div class="am-g aside-head">
+			<div class="am-u-sm-5">
+				<img class="am-round am-img-thumbnail" src="{{if .teacher.Headimgurl}}{{.teacher.Headimgurl}}{{else}}/static/img/avatar.jpeg{{end}}" />
+			</div>
+			<div class="am-u-sm-7">
+				<b class="am-text-lg">{{.teacher.Name}}</b><br>
+				<span>{{.teacher.Id}}</span><br>
+				<span>{{if .teacher.Department}}{{.teacher.Department.Name}}{{else}}未知{{end}}</span>
+			</div>
+		</div>
+		<ul class="aside-nav">
+			<li><a href="/view/teacher/info"><span class="am-icon-info"></span> 个人信息</a></li>
+			<li><a href="/view/teacher/profile"><span class="am-icon-info-circle"></span> 修改信息</a></li>
+			<li><a href="/view/teacher/setting"><span class="am-icon-cog"></span> 修改密码</a></li>
+			<li><a href="/view/teacher/notice"><span class="am-icon-bell"></span> 个人信箱 <span class="am-badge am-badge-danger am-radius">{{.noticeNum}}</span></a></li>
+			<li><a href="/view/teacher/table"><span class="am-icon-table"></span> 我的课程表</a></li>
+			<li><a href="/view/teacher/uploadImg"><span class="am-icon-image"></span> 修改个人头像</a></li>
+			<li><a href="/signOut"><span class="am-icon-sign-out"></span> 退出学风平台</a></li>
+		</ul>
+	</div>
+</div>
+<!-- header end -->
+
+
+{{.LayoutContent}}
+</body>
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/amazeui.min.js"></script>
+<script type="text/javascript" src="/static/js/common.js"></script>
+{{.Scripts}}
+</html>

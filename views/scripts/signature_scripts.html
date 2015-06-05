@@ -1,6 +1,6 @@
 <script type="text/javascript" src="/static/js/sha1.js"></script>
 <script type="text/javascript">
-	var appid = {{.appid}}, sessid = {{.sessid}}
+	var appid = {{.appid}}, sessid = {{.sessid}}, key = {{.key}};
 	function GetSignature(token, appid, sessid) {
 		var arr = new Array(3)
 		arr[0] = token

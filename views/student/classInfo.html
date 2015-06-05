@@ -1,0 +1,27 @@
+<div class="am-container">
+    <br>
+
+    <div class="am-u-sm-12">
+        <fieldset>
+            <legend>班级信息</legend>
+            <ul class="am-avg-md-3 am-avg-sm-2 am-thumbnails">
+                <li>班级名称：{{.class.Name}}</li>
+                <li>所属专业：{{.class.Major.Name}}</li>
+                <li>所属学院：{{.class.Department.Name}}</li>
+            </ul>
+        </fieldset>
+        <fieldset>
+            <legend>学生名单：{{if .class.Students}} {{.class.Students | len}}人 {{else}} 未知 {{end}}</legend>
+            <ul class="am-avg-md-9 am-avg-sm-2 am-thumbnails">
+                {{if .class.Students}}
+                    {{range $key, $val := .class.Students}}
+                        <li>{{$val.Name}}</li>
+                    {{end}}
+                {{else}}
+                    暂无
+                {{end}}
+            </ul>
+        </fieldset>
+
+    </div>
+</div>

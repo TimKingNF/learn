@@ -17,6 +17,37 @@
 {{end}}
 
 <div class="am-container">
+	<div class="am-u-sm-12 am-u-md-8 am-u-lg-5 reset">
+		<form action="/api/student/studentCourse" method="post" class="am-form">
+			<div class="am-form-group am-form-group-sm am-u-sm-5 pad-l-r">
+				<select name="xnd" class="am-form-field">
+					{{range $key, $val := (.term_list | GetTermsYear | FilterRepeat)}}
+					<option value="{{$val}}" {{if eq $val ($.term | GetTermYear)}}selected="selected"{{end}}>{{$val}}</option>
+					{{end}}
+				</select>
+			</div>
+			<div class="am-form-group am-form-group-sm am-u-sm-3 pad-l-r">
+				<select name="xqd" class="am-form-field">
+					{{range $key, $val := (.term_list | GetTermsNumber | FilterRepeat)}}
+					<option value="{{$val}}" {{if eq $val ($.term | GetTermNumber)}}selected="selected"{{end}}>{{$val}}</option>
+					{{end}}
+				</select>
+			</div>
+			<div class="am-form-group am-form-group-sm am-u-sm-2 pad-l-r">
+				<select name="week" class="am-form-field">
+					{{range $key, $val := .course_week}}
+					<option value="{{$val}}" {{if eq $.now_week $val}}selected="selected"{{end}}>{{$val}}</option>
+					{{end}}
+				</select>
+			</div>
+			<div class="am-form-group am-u-sm-2 pad-l-r">
+				<input type="hidden" name='key' value="{{.key}}">
+				<input type="hidden" name='signature' class='signature'>
+				<button type="submit" class="am-btn am-btn-primary am-btn-block am-btn-sm">查看</button>
+			</div>
+		</form>
+		<div>&nbsp;</div>
+	</div>
 	<table class="tb am-table-bordered">
 		<thead>
 			<tr>
@@ -29,133 +60,45 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td><small>08:00</small><br>1</td>
-				<td></td>
-				<td rowspan="3" class="tb-blue tb-class">
-					<span>系统分析与设计</span><br>
-					2实203
-				</td>
-				<td rowspan="2" class="tb-yellow tb-class">
-					<span>电子商务</span><br>
-					1教201
-				</td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td><small>08:50</small><br>2</td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td><small>09:45</small><br>3</td>
-				<td rowspan="3" class="tb-green tb-class">
-					<span>嵌入式系统与应用</span><br>
-					1实205
-				</td>
-				<td rowspan="3" class="tb-violet tb-class">
-					<span>ASP.NET技术</span><br>
-					2实203
-				</td>
-				<td rowspan="3" class="tb-blue-green tb-class">
-					<span>多媒体技术</span><br>
-					2实106
-				</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td><small>10:35</small><br>4</td>
-				<td rowspan="2" class="tb-red tb-class">
-					<span>管理学基础</span><br>
-					11教206
-				</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td><small>11:20</small><br>5</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td><small>12:50</small><br>6</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td><small>13:40</small><br>7</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td><small>14:30</small><br>8</td>
-				<td rowspan="2" class="tb-yellow tb-class">
-					<span>数字图像处理</span><br>
-					1教203
-				</td>
-				<td rowspan="2" class="tb-origin tb-class">
-					<span>网络设计与管理综合实训</span><br>
-					1实305
-				</td>
-				<td rowspan="3" class="tb-green tb-class">
-					<span>软件测试与项目管理</span><br>
-					2实106
-				</td>
-				<td rowspan="3" class="tb-black tb-class">
-					<span>软件与数据库开发实训</span><br>
-					2实105
-				</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td><small>15:15</small><br>9</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td><small>16:10</small><br>10</td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td><small>16:55</small><br>11</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td><small>18:45</small><br>12</td>
-				<td></td>
-				<td></td>
-				<td rowspan="3" class="tb-red tb-class">
-					<span>Java高级编程</span><br>
-					2实203
-				</td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td><small>19:35</small><br>13</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td><small>20:15</small><br>14</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
+			{{if .s_courses}}
+				{{range $key, $val := $.s_courses}}  <!--节-->
+				<tr>
+					<td><small>{{index $.course_time $key}}</small><br><b>{{$val.Key}}</b></td>
+					{{range $key1, $val1 := $val.Val.Val}}  <!--周几-->
+						{{if eq ($key1 | getKey) $val1.Key}}
+							{{if $val1.Val}}
+								{{if JudgeCourseSpacing $.now_week $val1.Val}}  <!-- 判断单双周 -->
+									{{if WeekIsPart $.now_week (index $val1.Val (JudgeCourseSpacing $.now_week $val1.Val)).TeacherCourse}} <!-- 几周到几周上课 -->
+										{{if eq $val.Key ((index $val1.Val (JudgeCourseSpacing $.now_week $val1.Val)).TeacherCourse.Time | GetWeekTime | GetWeekTimeSmall)}}
+											<td class="tb-class {{index $.course_color (GetCourseColor $key $val1.Key)}}" rowspan="{{(index $val1.Val (JudgeCourseSpacing $.now_week $val1.Val)).TeacherCourse.Time | GetWeekTime | len}}" data-student-course-id="{{(index $val1.Val (JudgeCourseSpacing $.now_week $val1.Val)).TeacherCourse.Id}}">
+												<span>{{(index $val1.Val (JudgeCourseSpacing $.now_week $val1.Val)).TeacherCourse.Course.Name}}</span><br>
+												{{(index $val1.Val (JudgeCourseSpacing $.now_week $val1.Val)).TeacherCourse.Teacher.Name}} <br>
+												{ 第{{(index $val1.Val (JudgeCourseSpacing $.now_week $val1.Val)).TeacherCourse.StartWeek}} - {{(index $val1.Val (JudgeCourseSpacing $.now_week $val1.Val)).TeacherCourse.EndWeek}}周
+												{{if (index $val1.Val (JudgeCourseSpacing $.now_week $val1.Val)).TeacherCourse.Remark}} | {{(index $val1.Val (JudgeCourseSpacing $.now_week $val1.Val)).TeacherCourse.Remark}} {{end}} } <br>
+												{{(index $val1.Val (JudgeCourseSpacing $.now_week $val1.Val)).TeacherCourse.Place}}
+											</td>
+										{{end}}
+									{{else}}
+									<td></td>
+									{{end}}
+								{{else}}
+								<td></td>
+								{{end}}
+							{{else}}		
+							<td></td>
+							{{end}}
+						{{end}}
+					{{end}}
+				</tr>
+				{{end}}
+			{{else}}
+				{{range $key, $val := $.course_time}}
+				<tr>
+					<td><small>{{$val}}</small><br><b>{{$key | getKey}}</b></td>
+					<td></td><td></td><td></td><td></td><td></td>
+				</tr>
+				{{end}}
+			{{end}}
 		</tbody>
 	</table>
 	<br>
@@ -169,8 +112,9 @@
 		<div class="am-modal-bd">
 			<br>
 			<div class="am-container am-padding-horizontal-lg am-padding-bottom-sm">
-				<a href="javascript: void(0)" class="am-btn am-btn-block am-btn-success">作业管理</a>
-				<a href="javascript: void(0)" class="am-btn am-btn-block am-btn-danger">课堂记录</a>
+				<a href="javascript: void(0)" class="am-btn am-btn-block am-btn-secondary" id="course-info">课程信息</a>
+				<a href="javascript: void(0)" class="am-btn am-btn-block am-btn-success" id="student-course-homework">作业管理</a>
+				<a href="javascript: void(0)" class="am-btn am-btn-block am-btn-danger" id="student-course-history">课堂记录</a>
 			</div>
 		</div>
 	</div>
