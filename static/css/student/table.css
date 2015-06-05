@@ -3,7 +3,7 @@
 }
 
 .tb th {
-    width: 18.5%;
+    width: 20%;
     height: 30px;
     text-align: center;
 }
@@ -19,12 +19,9 @@
 }
 
 .tb-class {
+    color: #FFFFFF;
     cursor: pointer;
     border-radius: 2px;
-}
-
-.tb span {
-    font-weight: bold;
 }
 
 .tb-red {
@@ -35,8 +32,8 @@
     background-color: #2ECC71;
 }
 
-.tb-dark-blue {
-    background-color: #0e90d2;
+.tb-black {
+    background-color: #34495E;
 }
 
 .tb-grey {
@@ -61,28 +58,4 @@
 
 .tb-blue-green {
     background-color: #1ABC9C;
-}
-
-.tb-light-blue {
-    background-color: #3BB4F2;
-}
-
-.tb-pink {
-    background-color: #FC9D9B;
-}
-
-.tb-light-green {
-    background-color: #CCFF99;
-}
-
-.tb-brown {
-    background-color: #CC6600;
-}
-
-.tb-dark-blue {
-    background-color: rgb(91, 151, 188);
-}
-
-.tb-rose-red {
-    background-color: #FE007F;
 }

@@ -19,7 +19,7 @@
 					progress.done()
 					loadingPanel.append(getNotice("导入教务系统信息完成..."))
 					loadingPanel.append(getNotice("3秒后自动跳转..."))
-					setTimeout(function() { window.location.href = "/view/student/eduManage";}, 3000)		
+					// setTimeout(function() { window.location.href = "/view/student/table";}, 3000)		
 				} else {
 					loadingPanel.append(getNotice(edata.Data))
 				}

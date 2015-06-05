@@ -3,7 +3,6 @@ package controllers
 import (
 	// "github.com/astaxie/beego"
 	"fmt"
-	Edu "learn/EDU"
 	"learn/models"
 	"strconv"
 )
@@ -57,8 +56,8 @@ func (this *ViewController) Login() {
 		edu := this.GetString("edu")
 		if edu == "on" {
 			if !models.StudentExist(account) {
-				if data, ok, cookies, _ := Edu.Sign_in(account, pwd, user_type); ok {
-					if _, err := Edu.GetStudentProfile(data, cookies); err == nil {
+				if data, ok, cookies, _ := models.EduLogin(account, pwd, user_type); ok {
+					if _, err := models.EduGetStudentProfile(data, cookies); err == nil {
 						if err = models.AddStudent(&models.Student{Id: account, EduPwd: pwd}); err == nil {
 							//	设置session
 							if this.GetSession("id") != nil {
@@ -133,7 +132,7 @@ func (this *ViewController) Login() {
 					this.SetSession("type", user_type)
 
 					//	login success
-					this.Redirect("/view/teacher/table", 302)
+					this.Redirect("/view/teacher/file", 302)
 					this.StopRun()
 				}
 			}

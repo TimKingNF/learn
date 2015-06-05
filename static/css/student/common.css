@@ -1,15 +1,6 @@
-.hide {
-	display: none;
-}
-
 .reset {
 	padding: 0;
 	margin: 0;
-}
-
-.pad-l-r {
-	padding: 0 5px;
-	padding-left: 0px;
 }
 
 /* 回到顶部样式 */

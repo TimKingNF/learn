@@ -6,7 +6,6 @@ import (
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 	_ "github.com/go-sql-driver/mysql"
-	Edu "learn/EDU"
 	"learn/models"
 	_ "learn/routers"
 )
@@ -21,8 +20,7 @@ func init() {
 	}
 	//	注册数据库表模型
 	orm.RegisterModel(new(models.Student), new(models.Department), new(models.Major), new(models.Class), new(models.Teacher), new(models.Admin), new(models.Term))
-	orm.RegisterModel(new(models.TeacherCourse), new(models.Course), new(models.StudentCourse), new(models.StudentGrade), new(Edu.EduLog), new(models.TeacherProfile))
-	orm.RegisterModel(new(models.TeacherCourseHomework), new(models.StudentNotice), new(models.StudentHomework), new(models.StudentCheck))
+	orm.RegisterModel(new(models.TeacherCourse), new(models.Course), new(models.StudentCourse), new(models.StudentGrade))
 	err = orm.RunSyncdb("default", false, false) //	运行数据库
 	if err != nil {
 		models.Info("main", err)

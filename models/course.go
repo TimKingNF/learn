@@ -65,12 +65,3 @@ func AddCourse(userPtr *Course) error {
 	}
 	return nil
 }
-
-func SearchCourse(name string) (*Course, error) {
-	var course Course
-	err := orm.NewOrm().QueryTable("Course").Filter("Name", name).RelatedSel().One(&course)
-	if err != nil {
-		return nil, ErrorInfo("SearchCourse", err)
-	}
-	return &course, nil
-}

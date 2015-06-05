@@ -14,13 +14,13 @@ func (this *ViewAdminController) Prepare() {
 	if user_type == "教务" {
 		id := this.GetSession("id").(string)
 		if len(id) > 0 {
-			if admin, err := models.GetAdminById(id); err == nil {
+			admin, err := models.GetAdminById(id)
+			if err == nil {
 				this.Data["admin"] = admin
 				//	设置操作签名，获取签名参数
 				appid, sessid := this.SetSignature()
 				this.Data["appid"] = appid
 				this.Data["sessid"] = sessid
-				this.Data["key"] = models.Str2Sha1(this.Ctx.Input.Cookie("beegosessionID"))
 				return
 			}
 		}
@@ -41,9 +41,10 @@ func (this *ViewAdminController) Index() {
 // @Title 设置视图
 // @router /setting [get]
 func (this *ViewAdminController) Setting() {
+	this.Data["key"] = models.Str2Sha1(this.Ctx.Input.Cookie("beegosessionID"))
 	this.Layout = "admin/base.html"
 	this.LayoutSections = make(map[string]string)
-	this.LayoutSections["Scripts"] = "scripts/signature_scripts.html"
+	this.LayoutSections["Scripts"] = "student/scripts/signature_scripts.html"
 	this.TplNames = "admin/setting.html"
 }
 

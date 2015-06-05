@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>文件页面</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/amazeui.min.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/teacher/common.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/teacher/file.css">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="Cache-Control" content="no-siteapp"/>
+	<meta name="mobile-web-app-capable" content="yes">
+	<!--[if lt IE 9]>
+	<script type="text/javascript">alert("sorry，low version of the browser does not support");</script>
+	<![endif]-->
+</head>
+<body>
+<!-- header start -->
+<div class="am-topbar am-topbar-inverse am-topbar-fixed-top">
+	<div class="am-container">
+		<h1 class="am-topbar-brand">
+			大学生创新训练项目
+		</h1>
+		<button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-primary am-show-sm-only" data-am-collapse="{target: '#nav'}"><span class="am-sr-only"></span> <span class="am-icon-bars"></span></button>
+
+		<div class="am-collapse am-topbar-collapse am-topbar-right" id="nav">
+			<ul class="am-nav am-nav-pills am-topbar-nav">
+				<li class="am-active"><a href="#">页面一</a></li>
+				<li><a href="#">页面二</a></li>
+				<li class="am-dropdown" data-am-dropdown>
+					<a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">下拉&nbsp;&nbsp;<span class="am-icon-caret-down"></span>
+					</a>
+					<ul class="am-dropdown-content">
+						<li><a href="#">页面三</a></li>
+						<li><a href="#">页面四</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<a href="javascript:;" data-am-smooth-scroll class="am-icon-btn am-icon-arrow-up am-active retop"></a>
+<br>
+<!-- header end -->
+
+<div class="am-container">
+	<br>
+	<div class="am-btn-group">
+		<button type="button" id="add" class="am-btn am-btn-sm am-btn-primary am-radius"><span class="am-icon-plus"></span>&nbsp;新建文件夹</button>
+		<button type="button" class="am-btn am-btn-sm am-btn-danger am-radius"><span class="am-icon-upload"></span>&nbsp;上传</button>
+	</div>
+	<div class="am-btn-group tools am-hide">
+		<button type="button" class="am-btn am-btn-sm am-btn-default am-radius"><span class="am-icon-download"></span>&nbsp;下载</button>
+		<button type="button" id="delete" class="am-btn am-btn-sm am-btn-default am-radius"><span class="am-icon-trash"></span>&nbsp;删除</button>
+	</div>
+</div>
+
+<hr>
+
+<div class="am-container">
+
+	<!-- 面包屑 -->
+	<ol class="am-breadcrumb">
+		<li><a href="#">首页</a></li>
+		<li><a href="#">分类</a></li>
+		<li class="am-active">内容</li>
+	</ol>
+
+	<!-- 主体内容 -->
+	<table class="am-table">
+		<thead class="active">
+			<tr>
+				<td class="tb-cx"><input type="checkbox" id="all"></td>
+				<td class="tb-fn">文件名</td>
+				<td>修改时间</td>
+			</tr>
+		</thead>
+		<tbody class="active-hover">
+			<tr class="folder">
+				<td class="tb-cx"><input type="checkbox" class="ipt-cx" ></td>
+				<td class="tb-fn"><span class="am-icon-folder-o"></span>&nbsp; 文件夹文件</td>
+				<td>2015-04-12 12:12:12</td>
+			</tr>
+			<tr>
+				<td class="tb-cx"><input type="checkbox" class="ipt-cx"></td>
+				<td class="tb-fn"><span class="am-icon-file-excel-o"></span>&nbsp; excel文档文件</td>
+				<td>2015-04-12 12:12:12</td>
+			</tr>
+			<tr>
+				<td class="tb-cx"><input type="checkbox" class="ipt-cx"></td>
+				<td class="tb-fn"><span class="am-icon-file-image-o"></span>&nbsp; 图片文件</td>
+				<td>2015-04-12 12:12:12</td>
+			</tr>
+			<tr>
+				<td class="tb-cx"><input type="checkbox" class="ipt-cx"></td>
+				<td class="tb-fn"><span class="am-icon-file-pdf-o"></span>&nbsp; pdf文件</td>
+				<td>2015-04-12 12:12:12</td>
+			</tr>
+			<tr>
+				<td class="tb-cx"><input type="checkbox" class="ipt-cx"></td>
+				<td class="tb-fn"><span class="am-icon-file-powerpoint-o"></span>&nbsp; PPT文档文件</td>
+				<td>2015-04-12 12:12:12</td>
+			</tr>
+			<tr>
+				<td class="tb-cx"><input type="checkbox" class="ipt-cx"></td>
+				<td class="tb-fn"><span class="am-icon-file-sound-o"></span>&nbsp; 音乐文件</td>
+				<td>2015-04-12 12:12:12</td>
+			</tr>
+			<tr>
+				<td class="tb-cx"><input type="checkbox" class="ipt-cx"></td>
+				<td class="tb-fn"><span class="am-icon-file-word-o"></span>&nbsp; word文档文件</td>
+				<td>2015-04-12 12:12:12</td>
+			</tr>
+			<tr>
+				<td class="tb-cx"><input type="checkbox" class="ipt-cx"></td>
+				<td class="tb-fn"><span class="am-icon-file-video-o"></span>&nbsp; 音频文件</td>
+				<td>2015-04-12 12:12:12</td>
+			</tr>
+			<tr>
+				<td class="tb-cx"><input type="checkbox" class="ipt-cx"></td>
+				<td class="tb-fn"><span class="am-icon-file-zip-o"></span>&nbsp; 压缩包文件</td>
+				<td>2015-04-12 12:12:12</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<!-- 确认框 -->
+<div class="am-modal am-modal-confirm" tabindex="-1" id="confirm">
+	<div class="am-modal-dialog">
+		<div class="am-modal-bd">
+			Are you sure ?
+		</div>
+		<div class="am-modal-footer">
+			<span class="am-modal-btn" data-am-modal-confirm>confirm</span>
+		</div>
+	</div>
+</div>
+
+<!-- 输入框 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="prompt">
+	<div class="am-modal-dialog">
+		<div class="am-modal-hd">&nbsp;</div>
+		<div class="am-modal-bd">
+			请输入文件夹名
+			<input type="text" class="am-modal-prompt-input">
+		</div>
+		<div class="am-modal-footer">
+			<span class="am-modal-btn" data-am-modal-confirm>confirm</span>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/amazeui.min.js"></script>
+<script type="text/javascript" src="/static/js/teacher/file.js"></script>
+</body>
+</html>
